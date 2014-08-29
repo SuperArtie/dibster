@@ -30,9 +30,9 @@ $ npm install
 $ npm test
 ```
 
-### Contributors
+### Collaborators
 - [Melanie Fryman](https://github.com/mlfryman)
-- [Nathan Vasquez] (https://github.com/superartie)
+- [Nathan Vasquez](https://github.com/superartie)
 - [Matt Keef](https://github.com/mkeef1)
 - [Juan Rodriguez](https://github.com/jjsub)
 
