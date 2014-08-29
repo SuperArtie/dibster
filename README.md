@@ -1,14 +1,14 @@
-## name of project
+## Dibster
 ### Code Badges
-build status icon
-coverage status icon
+[![Build Status](https://travis-ci.org/mlfryman/dibster.svg)](https://travis-ci.org/mlfryman/dibster)
+[![Coverage Status](https://coveralls.io/repos/mlfryman/dibster/badge.png)](https://coveralls.io/r/mlfryman/dibster)
 
 ### Screenshots
 ![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
 ![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.jpg)
 
 ### Description
-write a description about your project
+Dibster is a Node.js application that allows users to barter their goods.
 
 ### Models
 ```
@@ -31,8 +31,11 @@ $ npm test
 ```
 
 ### Contributors
-- [Chyld Medford](https://github.com/chyld)
+- [Melanie Fryman](https://github.com/mlfryman)
+- [Nathan Vasquez] (https://github.com/superartie)
+- [Matt Keef](https://github.com/mkeef1)
+- [Juan Rodriguez](https://github.com/jjsub)
 
 ### License
-[MIT](LICENSE)
+- [MIT](LICENSE)
 
