@@ -5,7 +5,11 @@
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
+  "username" : "sue",
   "email" : "sue@aol.com",
-  "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa"
+  "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa",
+  "phone" : 6152436772,
+  "photo" : "https://pbs.twimg.com/media/A8heEWXCAAAfa0D.jpg",
+  "location" : {"name":"Paris, TN USA ", "lat":15, "lng":9}
 }
 

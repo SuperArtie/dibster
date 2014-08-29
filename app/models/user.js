@@ -1,9 +1,13 @@
 'use strict';
 
 var bcrypt = require('bcrypt'),
+    _      = require('lodash'),
     Mongo  = require('mongodb');
 
 function User(){
+  //constructor for users should be blank since we'll be using
+  //the "edit profile" feature to add properties to their objects
+  //via the the '#save' method
 }
 
 Object.defineProperty(User, 'collection', {
@@ -12,7 +16,13 @@ Object.defineProperty(User, 'collection', {
 
 User.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  User.collection.findOne({_id:_id}, cb);
+  User.collection.findOne({_id:_id}, function(err, obj){
+    cb(err, _.create(User.prototype, obj));
+  });
+};
+
+User.all = function(cb){
+  User.collection.find().toArray(cb);
 };
 
 User.register = function(o, cb){
@@ -21,6 +31,15 @@ User.register = function(o, cb){
     o.password = bcrypt.hashSync(o.password, 10);
     User.collection.save(o, cb);
   });
+};
+
+User.prototype.save = function(o, cb){
+  var properties = Object.keys(o),
+      self       = this;
+  properties.forEach(function(property){
+        self[property] = o[property];
+    });
+  User.collection.save(this, cb);
 };
 
 User.authenticate = function(o, cb){
