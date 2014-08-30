@@ -35,8 +35,6 @@ module.exports = function(app, express){
   // authenticated users
   app.use(security.bounce);
   app.delete('/logout', users.logout);
-  app.post('/items', items.create);
-/*
   app.get('/profile/edit', users.edit); .edit.jade
   app.put('/profile/edit', users.editProfile); // .update
   app.get('/profile', users.profile); // .profile.jade
@@ -44,8 +42,8 @@ module.exports = function(app, express){
   app.post('/message/:userId', users.message); // .send
   app.get('/message/:msgId', users.readMessage); // .message
   app.get('/messages', users.displayMessages); // .inbox.jade
-*/
 
+  app.post('/items', items.create);
 
   console.log('Express: Routes Loaded');
 };

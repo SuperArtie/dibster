@@ -62,7 +62,7 @@ describe('Item', function(){
         done();
       });
     });
-    /*  TODO: determine why query by ownerId works, but query category does not
+    //  TODO: determine why query by ownerId works, but query category does not
     it('should query for Items by category', function(done){
       Item.query({category:'Test'}, function(err, items){
         console.log('--------TEST ITEMS-------');
@@ -70,7 +70,7 @@ describe('Item', function(){
         expect(items).to.have.length(2);
         done();
       });
-    }); */
+    }); 
   });
 
   describe('.findById', function(){

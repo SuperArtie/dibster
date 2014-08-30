@@ -39,6 +39,7 @@ Item.destroy = function(id, cb){
   Item.collection.remove({_id:_id}, cb);
 };
 
+/*
 Item.query = function(query, cb){
   console.log(query);
   var property = Object.keys(query)[0];
@@ -47,17 +48,23 @@ Item.query = function(query, cb){
   console.log(query.property);
   Item.collection.find(query).sort({datePosted:-1}).toArray(cb);
 };
+*/
 
 Item.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
   Item.collection.findOne({_id:_id}, cb);
 };
-/*
+
+Item.findAllForUser = function(userId, cb){
+  Item.collection.find({ownerId:userId}).toArray(function(err, items){
+    async.map(items, getNumberOfBids, cb);
+  });
+};
+
 Item.findAvailable = function(id, cb){
   var ownerId = Mongo.ObjectID(id);
   Item.collection.find({ownerId: ownerId, isAvailable: true}).toArray(cb);
 };
-*/
 
 module.exports = Item;
 
