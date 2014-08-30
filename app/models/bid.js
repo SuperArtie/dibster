@@ -10,7 +10,7 @@ Object.defineProperty(Bid, 'collection', {
 });
 
 Bid.countItemBids = function(itemId, cb){
-  Bid.collection.count({itemUpForBidId:itemId, isActive:true}, cb);
+  Bid.collection.count({itemToId:itemId, isActive:true}, cb);
 };
 
 Bid.findById = function(id, cb){

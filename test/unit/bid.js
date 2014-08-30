@@ -35,7 +35,12 @@ describe('Bid', function(){
       expect(b.isActive).to.be.true;
     });
   });
-});
 
+  describe('countItemBids', function(){
+    it('should count all available bids', function(done){
+      expect(bids).to.
+    });
+  });
+});
 
 
