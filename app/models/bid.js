@@ -13,14 +13,13 @@ Object.defineProperty(Bid, 'collection', {
   get: function(){return global.mongodb.collection('bids');}
 });
 
-Bid.create = function(o, cb){
-  var a = new Bid(o);
-  Bid.collection.save(a, cb);
+Bid.countBids = function(itemId, cb){
+  Bid.collection.count({itemUpForBidId:itemId, isOpen:true}, cb);
 };
 
-Bid.query = function(query, cb){
-  var property = Object.keys(query)[0];
-  query[property] = Mongo.ObjectID(query[property]);
-  Bid.collection.find(query).sort({date:1}).toArray(cb);
+Bid.findById = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  Bid.collection.findOne({_id:_id}, cb);
 };
-module.exports = Bid;
+
+module.exports = Bid;use
