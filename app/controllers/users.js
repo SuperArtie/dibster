@@ -1,6 +1,8 @@
 'use strict';
 
-var User = require('../models/user');
+var User = require('../models/user'),
+    Message = require('../models/message'),
+    moment = require('moment');
 
 exports.new = function(req, res){
   res.render('users/new');

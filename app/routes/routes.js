@@ -9,7 +9,7 @@ var morgan         = require('morgan'),
     security       = require('../lib/security'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
-    items          = require('../controllers/items'),
+    // items          = require('../controllers/items'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
