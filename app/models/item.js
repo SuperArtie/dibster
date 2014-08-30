@@ -1,9 +1,9 @@
 'use strict';
 
 var Mongo  = require('mongodb'),
-    _      = require('lodash');
-    // Bid    = require('./bid'),
-    // async  = require('async');
+    _      = require('lodash'),
+    Bid    = require('./bid'),
+    async  = require('async');
 
 function Item(o){
   this.name = o.name;
@@ -34,30 +34,14 @@ Item.create = function(o, cb){
   Item.collection.save(item, cb);
 };
 
-Item.destroy = function(id, cb){
-  var _id = Mongo.ObjectID(id);
-  Item.collection.remove({_id:_id}, cb);
-};
-
-/*
-Item.query = function(query, cb){
-  console.log(query);
-  var property = Object.keys(query)[0];
-  console.log(property);
-  query[property] = Mongo.ObjectID(query[property]);
-  console.log(query.property);
-  Item.collection.find(query).sort({datePosted:-1}).toArray(cb);
-};
-*/
-
 Item.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
   Item.collection.findOne({_id:_id}, cb);
 };
 
-Item.findAllForUser = function(userId, cb){
+Item.findAllByOwner = function(userId, cb){
   Item.collection.find({ownerId:userId}).toArray(function(err, items){
-    async.map(items, getNumberOfBids, cb);
+    async.map(items, getNumBids, cb);
   });
 };
 
@@ -66,19 +50,23 @@ Item.findAvailable = function(id, cb){
   Item.collection.find({ownerId: ownerId, isAvailable: true}).toArray(cb);
 };
 
+Item.destroy = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  Item.collection.remove({_id:_id}, cb);
+};
+
 module.exports = Item;
 
 // PRIVATE HELPER FUNCTIONS
 
 
-/*
 function getNumBids(item, cb){
   Bid.countItemBids(item._id, function(err, count){
     item.numBids = count;
     cb(null, item);
   });
 }
-
+/*
 // Harder feature (upload photos)
 function moveFiles(photos, count, relDir){
   var baseDir = __dirname + '/../static',
@@ -101,3 +89,14 @@ function moveFiles(photos, count, relDir){
   return _.compact(tmpPhotos);
 }
 */
+/*
+Item.query = function(query, cb){
+  console.log(query);
+  var property = Object.keys(query)[0];
+  console.log(property);
+  query[property] = Mongo.ObjectID(query[property]);
+  console.log(query.property);
+  Item.collection.find(query).sort({datePosted:-1}).toArray(cb);
+};
+*/
+
