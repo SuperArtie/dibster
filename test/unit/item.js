@@ -55,30 +55,32 @@ describe('Item', function(){
     });
   });
 
-  describe('.query', function(){
-    it('should query for Items by ownerId', function(done){
-      Item.query({ownerId:'000000000000000000000001'}, function(err, items){
-        expect(items).to.have.length(2);
-        done();
-      });
-    });
-    //  TODO: determine why query by ownerId works, but query category does not
-    it('should query for Items by category', function(done){
-      Item.query({category:'Test'}, function(err, items){
-        console.log('--------TEST ITEMS-------');
-        console.log(err, items);
-        expect(items).to.have.length(2);
-        done();
-      });
-    }); 
-  });
-
   describe('.findById', function(){
     it('should return an Item in the database by it\'s ID', function(done){
       var id = Mongo.ObjectID('a00000000000000000000002');
       Item.findById(id, function(err, item){
         expect(item.name).to.equal('Shrubbery');
         expect(item.description).to.include('Knights');
+        done();
+      });
+    });
+  });
+
+  describe('.findAllByOwner', function(){
+    it('should return all items owned by the user in the database', function(done){
+      var id = Mongo.ObjectID('000000000000000000000001');
+      Item.findAllByOwner(id, function(err, items){
+        expect(items).to.have.length(2);
+        expect(items[1].numBids).to.equal(1);
+        done();
+      });
+    });
+  });
+
+  describe('.findAvailable', function(){
+    it('should find available items for a given user in the database', function(done){
+      Item.findAvailable('000000000000000000000001', function(err, items){
+        expect(items).to.have.length(2);
         done();
       });
     });

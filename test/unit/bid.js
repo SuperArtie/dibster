@@ -7,7 +7,7 @@ var expect    = require('chai').expect,
     Bid       = require('../../app/models/bid'),
     dbConnect = require('../../app/lib/mongodb'),
     cp        = require('child_process'),
-    Mongo     = require('mongodb'),
+   // Mongo     = require('mongodb'),
     db        = 'dibster-test';
 
 describe('Bid', function(){
@@ -25,41 +25,19 @@ describe('Bid', function(){
 
   describe('constructor', function(){
     it('should create a new Bid object', function(){
-      var o = {userToId:'123456789012345678901234', userFromId:'123456789012345678901233', itemToId:'123456789012345678901222', itemFromId:'123456789012345678901111'},
-          b = new Bid(o);
+      var  b = new Bid();
       expect(b).to.be.instanceof(Bid);
-      expect(b.userToId).to.be.instanceof(Mongo.ObjectID);
-      expect(b.userFromId).to.be.instanceof(Mongo.ObjectID);
-      expect(b.itemToId).to.be.instanceof(Mongo.ObjectID);
-      expect(b.itemFromId).to.be.instanceof(Mongo.ObjectID);
     });
   });
 
-  describe('.create', function(){
-    it('should create a new bid', function(done){
-      var o = {userToId:'123456789012345678901234', userFromId:'123456789012345678901233', itemToId:'123456789012345678901222', itemFromId:'123456789012345678901111'};
-      Bid.create(o, function(err, bid){
-        expect(bid._id).to.be.instanceof(Mongo.ObjectID);
+/*  describe('countItemBids', function(){
+    it('should count all available bids', function(done){
+      Bid.countItemBids(itemId, function(err, bid){
+        expect(bid.isActive).to.be.true;
         done();
       });
     });
-  });
-
-  describe('.query', function(){
-    it('should query for bids - from user', function(done){
-      Bid.query({userFromId:'100000000000000000000001'}, function(err, bid){
-        expect(this.userFromId).to.equal('100000000000000000000001');
-        done();
-      });
-    });
-
-    it('should query for bids - to user', function(done){
-      Bid.query({userToId:'200000000000000000000002'}, function(err, bid){
-        expect(this.userToId).to.equal('200000000000000000000002');
-        done();
-      });
-    });
-  });
+  });*/
 });
 
 
