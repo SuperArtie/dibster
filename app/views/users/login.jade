@@ -1,17 +1,18 @@
 extends ../shared/template
 block content
-  h2 Login
-  .row
-    .col-xs-6
-      form(role='form', method='post', action='/login')
-        .form-group
-          label(for='email') Email
-          input.form-control#email(type='email', name='email', autofocus=true)
-        .form-group
-          label(for='password') Password
-          input.form-control#password(type='password', name='password')
-        button.btn.btn-success(type='submit') Submit
-    .col-xs-6
-
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h1#header Dibster
+    .row
+      .col-xs-4
+      .col-xs-4
+        form.form-signin(role='form', method='post', action='/login')
+          h2.form-signin-heading Please sign in
+          input.form-control#loginEmail(type='email', name='loginEmail', placeholder='Email address', required=true, autofocus=true)
+          //- input.form-control#loginUsername(type='email', name='loginUsername', placeholder='Username', required=true, autofocus=true)
+          input.form-control#loginPassword(type='password', name='loginPassword', placeholder='Password', required=true)
+          button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+      .col-xs-4
 block scripts
-

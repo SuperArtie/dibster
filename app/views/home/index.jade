@@ -1,21 +1,17 @@
 extends ../shared/template
 block content
-  h2 Home
-  .panel.panel-default
-    .panel-body
-      h4 Bootstrap Themes and Templates
-      ul
-        li: a(href='http://bootswatch.com/', target='_blank') http://bootswatch.com/
-        li: a(href='http://bootstrapzero.com/', target='_blank') http://bootstrapzero.com/
-        li: a(href='http://startbootstrap.com/', target='_blank') http://startbootstrap.com/
-        li: a(href='http://www.prepbootstrap.com/', target='_blank') http://www.prepbootstrap.com/
-        li: a(href='http://www.blacktie.co/', target='_blank') http://www.blacktie.co/
-        li: a(href='https://bootstrapmaster.com/', target='_blank') https://bootstrapmaster.com/
-        li: a(href='http://bootstrapstyler.com/', target='_blank') http://bootstrapstyler.com/
-      h4 Favicon Generators
-      ul
-        li: a(href='http://www.favicon.cc/', target='_blank') http://www.favicon.cc/
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h1#header Home
+    .bs-component
+      .jumbotron
+        h1 Dibster
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta metus nec eros tempor, ut ultricies est fringilla. Vivamus justo nibh, laoreet a lorem et, molestie gravida leo. Nunc vel dui vestibulum, sagittis neque eget, cursus orci. Sed lorem velit, volutpat sit amet auctor nec, eleifend ac augue. Praesent pretium, purus vitae finibus interdum, nibh augue elementum orci, et condimentum lacus diam posuere enim. Nullam lacinia, ligula nec mollis ultrices, justo est imperdiet purus, et auctor sem augue molestie nisl. Ut volutpat, lorem non imperdiet interdum, velit sapien pharetra sem, eu commodo ligula nibh at dui.
+        p
+          a.btn.btn-primary.btn-lg(href='/about') About
 
 block scripts
   script(src='/js/user/home.js')
-

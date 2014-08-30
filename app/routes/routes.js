@@ -22,14 +22,28 @@ module.exports = function(app, express){
   app.use(security.authenticate);
   app.use(debug.info);
 
+  // guest users
   app.get('/', home.index);
+  app.get('/about', home.about);
+  app.get('/faq', home.faq);
   app.get('/register', users.new);
   app.post('/register', users.create);
   app.get('/login', users.login);
   app.post('/login', users.authenticate);
 
+  // authenticated users
   app.use(security.bounce);
   app.delete('/logout', users.logout);
+/*
+  app.get('/profile/edit', users.edit);
+  app.put('/profile/edit', users.editProfile); // .update
+  app.get('/profile', users.profile); // .show
+  app.get('/user/:username', users.viewProfile); // .client
+  app.post('/message/:userId', users.message); // .send
+  app.get('/message/:msgId', users.readMessage); // .message
+  app.get('/messages', users.displayMessages); // .messages
+*/
+
 
   console.log('Express: Routes Loaded');
 };

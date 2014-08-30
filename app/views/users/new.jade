@@ -1,17 +1,27 @@
 extends ../shared/template
 block content
-  h2 Register
-  .row
-    .col-xs-6
-      form(role='form', method='post', action='/register')
-        .form-group
-          label(for='email') Email
-          input.form-control#email(type='email', name='email', autofocus=true)
-        .form-group
-          label(for='password') Password
-          input.form-control#password(type='password', name='password')
-        button.btn.btn-primary(type='submit') Submit
-    .col-xs-6
-
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h1#header Create a New Dibster Account
+    .row
+      form.form-horizontal(role='form', method='post', action='/register')
+        fieldset
+          legend Register
+          .form-group
+            label.col-lg-2.control-label(for='regEmail') Email
+            .col-lg-10
+              input#regEmail.form-control(type='text', placeholder='Email Address')
+          .form-group
+            label.col-lg-2.control-label(for='regUsername') Username
+            .col-lg-10
+              input#regUsername.form-control(type='text', placeholder='Username')
+                span.help-block
+                  | Your username is public.
+          .form-group
+            label.col-lg-2.control-label(for='regPassword') Password
+            .col-lg-10
+              input#regPassword.form-control(type='password', placeholder='Password')
+          button.btn.btn-lg.btn-primary.btn-block(type='submit') Register
 block scripts
-

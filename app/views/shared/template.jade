@@ -4,22 +4,23 @@ html(lang='en')
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Template
-    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    title Dibster
+    link(href='//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/css/style.css')
   body
-    include nav
     .container-fluid
+      .row
+        .col-xs-12
+          include nav
       .row
         .col-xs-12
           block content
 
-    script(src='/js/vendor/jquery-2.1.1.min.js')
-    script(src='/js/vendor/async.js')
-    script(src='/js/vendor/lodash.min.js')
-    script(src='/js/vendor/moment.min.js')
-    script(src='/bootstrap/js/bootstrap.min.js')
-    script(src='/js/user/main.js')
+  script(src='/js/vendor/jquery-2.1.1.min.js')
+  script(src='/js/vendor/async.js')
+  script(src='/js/vendor/lodash.min.js')
+  script(src='/js/vendor/moment.min.js')
+  script(src='/bootstrap/js/bootstrap.min.js')
+  script(src='/js/user/main.js')
 
-    block scripts
-
+block scripts
