@@ -1,0 +1,38 @@
+// Edit profile view
+extends ../shared/template
+block content
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h1#header Add Your Aswesome Item.
+    .row
+      .col-xs-6
+        form(role='form', method='post', action='/items')
+          input(type='hidden', name='_method', value='put')
+          .form-group
+            label(for='itemName') Item Name:
+            input.form-control#itemName(type='text', name='itemName', autofocus=true)
+          .form-group
+            label(for='itemDescription') Item Description:
+            input.form-control#itemEmail(type='text', name='itemEmail' )
+          .form-group
+            label(for='itemPhone') Phone
+            input.form-control#itemPhone(type='url', name='itemPhoto')
+          .form-group
+            label(for='itemCategory') Item Category:
+            input.form-control#itemCategory(type='text', name='itemCategory')
+          .form-group
+            label(for='itemTags') Tags:
+            input.form-control#itemTags(type='text', name='itemTags')
+          button.btn.btn-success(type='submit') Summit
+      .col-xs-6
+
+block scripts
+
+
+
+
+
+
+
