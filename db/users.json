@@ -1,5 +1,6 @@
 {
   "_id" : {"$oid":"000000000000000000000001"},
+  "username" : "bob",
   "email" : "bob@aol.com",
   "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
   "isVisible" : true

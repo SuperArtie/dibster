@@ -1,0 +1,39 @@
+{
+  "_id" : {"$oid":"a00000000000000000000001"},
+  "name" : "Teddy Ruxpin",
+  "description" : "The world's first animated talking toy.",
+  "photo" : "http://mysynonym.com/wp-content/uploads/2012/09/teddyruxpin-e.gif",
+  "category" : "Toys",
+  "tags" : ["teddy bear", "children", "collectible", "animatronic", "test"],
+  "ownerId" : {"$oid":"000000000000000000000001"},
+  "datePosted" : {"$date":477295200000},
+  "isForSale" : "false",
+  "isOffered" : "false",
+  "isAvailable" : "true"
+}
+{
+  "_id" : {"$oid":"a00000000000000000000002"},
+  "name" : "Shrubbery",
+  "description" : "Perfect for appeasing The Knights Who Say Ekke Ekke Ekke Ekke Ptangya Zoooooooom Boing Ni, or The Knights Who 'Til Recently Said Ni.",
+  "photo" : "http://1.bp.blogspot.com/_NFevjU91c1w/TUbWoqSZeZI/AAAAAAAAAD8/H4NJrsL9iZA/s1600/shrubbery.jpg",
+  "category" : "Test",
+  "tags" : ["sacrifice", "utility", "decor"],
+  "ownerId" : {"$oid":"000000000000000000000001"},
+  "datePosted" : {"$date":479295200000},
+  "isForSale" : "false",
+  "isOffered" : "true",
+  "isAvailable" : "false"
+}
+{
+  "_id" : {"$oid":"a00000000000000000000003"},
+  "name" : "Llama",
+  "description" : "This sad llama needs a new forever home.",
+  "photo" : "http://quizimg.whichblankareyou.com/Q1241A189089.png",
+  "category" : "Test",
+  "tags" : ["animal", "agriculture", "textile", "test"],
+  "ownerId" : {"$oid":"000000000000000000000002"},
+  "datePosted" : {"$date":477295200000},
+  "isForSale" : "false",
+  "isOffered" : "false",
+  "isAvailable" : "true"
+}

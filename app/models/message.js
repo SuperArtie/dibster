@@ -39,7 +39,10 @@ Message.messages = function(receiverId, cb){
 
 module.exports = Message;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 31d7743111edd22bb55a5da0c884aeb43d118103
 function iterator(msg, cb){
   require('./user').findById(msg.senderId, function(err, sender){
     msg.sender = sender;
