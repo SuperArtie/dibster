@@ -22,4 +22,4 @@ Bid.findById = function(id, cb){
   Bid.collection.findOne({_id:_id}, cb);
 };
 
-module.exports = Bid;use
+module.exports = Bid;

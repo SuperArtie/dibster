@@ -35,7 +35,7 @@ module.exports = function(app, express){
   // authenticated users
   app.use(security.bounce);
   app.delete('/logout', users.logout);
-  app.get('/profile/edit', users.edit); .edit.jade
+  app.get('/profile/edit', users.edit); //.edit.jade
   app.put('/profile/edit', users.editProfile); // .update
   app.get('/profile', users.profile); // .profile.jade
   app.get('/user/:username', users.viewProfile); // .public.jade
