@@ -41,3 +41,45 @@ exports.authenticate = function(req, res){
   });
 };
 
+exports.edit = function(req, res){
+  res.render('users/edit');
+};
+
+exports.editProfile = function(req, res){
+  res.locals.user.save(req.body, function(){
+    res.redirect('/profile');
+  });
+};
+
+exports.profile = function(req, res){
+  res.render('users/profile');
+};
+
+exports.viewProfile = function(req, res){
+  User.viewProfile(req.params.username, function(err, user){
+    res.render('users/public', {publicUser: user});
+  });
+};
+
+//Send Message
+exports.send = function(req, res){
+  User.findById(req.params.userId, function(err, receiver){
+    res.locals.user.send(receiver, req.body, function(){
+      res.redirect('/user/' + receiver.email);
+    });
+  });
+};
+
+//Display all messages to given user
+exports.displayMessages = function(req, res){
+  res.locals.user.messages(function(err, msgs){
+    res.render('users/inbox', {msgs:msgs});
+  });
+};
+
+//Display a single message
+exports.readMessage = function(req, res){
+  Message.read(req.params.msgId, function(err, msg){
+    res.render('users/message', {msg:msg, moment:moment});
+  });
+};
