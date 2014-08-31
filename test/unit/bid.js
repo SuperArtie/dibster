@@ -30,14 +30,5 @@ describe('Bid', function(){
     });
   });
 
-/*  describe('countItemBids', function(){
-    it('should count all available bids', function(done){
-      Bid.countItemBids(itemId, function(err, bid){
-        expect(bid.isActive).to.be.true;
-        done();
-      });
-    });
-  });*/
+// Last bracket
 });
-
-

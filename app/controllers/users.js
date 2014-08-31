@@ -49,6 +49,7 @@ exports.edit = function(req, res){
 
 exports.editProfile = function(req, res){
   res.locals.user.save(req.body, function(){
+    console.log('~~~~~~user:' + res.locals.user);
     res.redirect('/profile');
   });
 };

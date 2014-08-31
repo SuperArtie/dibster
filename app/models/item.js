@@ -35,8 +35,8 @@ Item.create = function(o, cb){
 };
 
 Item.findById = function(id, cb){
-  var _id = Mongo.ObjectID(id);
-  Item.collection.findOne({_id:_id}, cb);
+  var itemId = Mongo.ObjectID(id);
+  Item.collection.findOne({_id:itemId}, cb);
 };
 
 Item.findAllByOwner = function(userId, cb){
@@ -45,9 +45,9 @@ Item.findAllByOwner = function(userId, cb){
   });
 };
 
-Item.findAvailable = function(id, cb){
-  var ownerId = Mongo.ObjectID(id);
-  Item.collection.find({ownerId: ownerId, isAvailable: true}).toArray(cb);
+Item.findAvailable = function(userId, cb){
+  var ownerId = Mongo.ObjectID(userId);
+  Item.collection.find({ownerId:ownerId, isAvailable:true}).toArray(cb);
 };
 
 Item.destroy = function(id, cb){
@@ -57,11 +57,11 @@ Item.destroy = function(id, cb){
 
 module.exports = Item;
 
-// PRIVATE HELPER FUNCTIONS
+// PRIVATE HELPER FUNCTIONS //
 
 
 function getNumBids(item, cb){
-  Bid.countItemBids(item._id, function(err, count){
+  Bid.countBids(item._id, function(err, count){
     item.numBids = count;
     cb(null, item);
   });
@@ -89,14 +89,3 @@ function moveFiles(photos, count, relDir){
   return _.compact(tmpPhotos);
 }
 */
-/*
-Item.query = function(query, cb){
-  console.log(query);
-  var property = Object.keys(query)[0];
-  console.log(property);
-  query[property] = Mongo.ObjectID(query[property]);
-  console.log(query.property);
-  Item.collection.find(query).sort({datePosted:-1}).toArray(cb);
-};
-*/
-

@@ -70,17 +70,24 @@ describe('Item', function(){
     it('should return all items owned by the user in the database', function(done){
       var id = Mongo.ObjectID('000000000000000000000001');
       Item.findAllByOwner(id, function(err, items){
-        expect(items).to.have.length(2);
-        // expect(items[1].numBids).to.equal(1);
+        expect(items).to.have.length(3);
+        expect(items[1].numBids).to.equal(1);
+        done();
+      });
+    });
+    it('should return the number of bids placed on all items owned by the user in the database', function(done){
+      var id = Mongo.ObjectID('000000000000000000000001');
+      Item.findAllByOwner(id, function(err, items){
+        expect(items[1].numBids).to.equal(1);
         done();
       });
     });
   });
 
   describe('.findAvailable', function(){
-    it('should find available items for a given user in the database', function(done){
+    it('should find a user\'s available items in the database', function(done){
       Item.findAvailable('000000000000000000000001', function(err, items){
-        expect(items).to.have.length(2);
+        expect(items).to.have.length(3);
         done();
       });
     });

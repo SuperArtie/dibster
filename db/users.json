@@ -1,16 +1,16 @@
 {
   "_id" : {"$oid":"000000000000000000000001"},
-  "username" : "bob",
-  "email" : "bob@aol.com",
+  "username" : "mlfryman",
+  "email" : "melanie@frymanet.com",
   "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
-  "phone" : 6152436771,
-  "photo" : "http://38.media.tumblr.com/8ef78f4377b12e0a72959be74c6e039d/tumblr_mrk0y8mMZ51qdgj2no1_500.png",
+  "phone" : 6159738933,
+  "photo" : "https://dl.dropboxusercontent.com/u/1699691/mlfryman-profile.jpg",
   "location" : {"name":"Nashville, TN USA ", "lat":12, "lng":7}
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
-  "username" : "sue",
-  "email" : "sue@aol.com",
+  "username" : "superartie",
+  "email" : "nathan.superartie@gmail.com",
   "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa",
   "phone" : 6152436772,
   "photo" : "https://pbs.twimg.com/media/A8heEWXCAAAfa0D.jpg",

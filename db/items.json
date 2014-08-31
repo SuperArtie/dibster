@@ -7,9 +7,9 @@
   "tags" : ["teddy bear", "children", "collectible", "animatronic", "test"],
   "ownerId" : {"$oid":"000000000000000000000001"},
   "datePosted" : {"$date":477295200000},
+  "isOffered" : "true",
   "isForSale" : "false",
-  "isOffered" : "false",
-  "isAvailable" : "true"
+  "isAvailable" : "false"
 }
 {
   "_id" : {"$oid":"a00000000000000000000002"},
@@ -20,9 +20,9 @@
   "tags" : ["sacrifice", "utility", "decor"],
   "ownerId" : {"$oid":"000000000000000000000001"},
   "datePosted" : {"$date":479295200000},
-  "isForSale" : "false",
-  "isOffered" : "true",
-  "isAvailable" : "false"
+  "isOffered" : "false",
+  "isForSale" : "true",
+  "isAvailable" : "true"
 }
 {
   "_id" : {"$oid":"a00000000000000000000003"},
@@ -33,7 +33,46 @@
   "tags" : ["animal", "agriculture", "textile", "test"],
   "ownerId" : {"$oid":"000000000000000000000002"},
   "datePosted" : {"$date":477295200000},
+  "isOffered" : "true",
   "isForSale" : "false",
+  "isAvailable" : "false"
+}
+{
+  "_id" : {"$oid":"a00000000000000000000004"},
+  "name" : "Cat",
+  "description" : "This sad cat needs a new forever home.",
+  "photo" : "http://i.ytimg.com/vi/PKffm2uI4dk/maxresdefault.jpg",
+  "category" : "Test",
+  "tags" : ["animal", "agriculture"],
+  "ownerId" : {"$oid":"000000000000000000000002"},
+  "datePosted" : {"$date":477295200000},
   "isOffered" : "false",
+  "isForSale" : "true",
+  "isAvailable" : "true"
+}
+{
+  "_id" : {"$oid":"a00000000000000000000005"},
+  "name" : "Dog",
+  "description" : "This sad dog needs a new forever home.",
+  "photo" : "http://www.perfectduluthday.com/wp-content/uploads/2010/05/sad-dog.jpg",
+  "category" : "Test",
+  "tags" : ["animal", "agriculture"],
+  "ownerId" : {"$oid":"000000000000000000000002"},
+  "datePosted" : {"$date":477295200000},
+  "isOffered" : "false",
+  "isForSale" : "true",
+  "isAvailable" : "true"
+}
+{
+  "_id" : {"$oid":"a00000000000000000000006"},
+  "name" : "Sloth",
+  "description" : "This sad sloth needs a new forever home.",
+  "photo" : "http://sarahhollowell.files.wordpress.com/2013/01/sad-sloth.jpg",
+  "category" : "Test",
+  "tags" : ["animal", "agriculture"],
+  "ownerId" : {"$oid":"000000000000000000000001"},
+  "datePosted" : {"$date":477295200000},
+  "isOffered" : "false",
+  "isForSale" : "true",
   "isAvailable" : "true"
 }

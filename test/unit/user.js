@@ -32,7 +32,7 @@ describe('User', function(){
   describe('.findById', function(){
     it('should find a user by id', function(done){
       User.findById('000000000000000000000001', function(err, user){
-        expect(user.email).to.equal('bob@aol.com');
+        expect(user.email).to.equal('melanie@frymanet.com');
         done();
       });
     });
@@ -85,4 +85,3 @@ describe('User', function(){
 
 // Last bracket
 });
-
