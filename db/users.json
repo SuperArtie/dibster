@@ -3,18 +3,16 @@
   "username" : "bob",
   "email" : "bob@aol.com",
   "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
-  "isVisible" : true
+  "phone" : 6152436771,
+  "photo" : "http://38.media.tumblr.com/8ef78f4377b12e0a72959be74c6e039d/tumblr_mrk0y8mMZ51qdgj2no1_500.png",
+  "location" : {"name":"Nashville, TN USA ", "lat":12, "lng":7}
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
-  "email": "nodetester@yahoo.com",
-  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
-  "isVisible" : true,
-  "phone": "615-222-3333"
-}
-{
-  "_id" : {"$oid":"000000000000000000000003"},
+  "username" : "sue",
   "email" : "sue@aol.com",
   "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa",
-  "isVisible" : false
+  "phone" : 6152436772,
+  "photo" : "https://pbs.twimg.com/media/A8heEWXCAAAfa0D.jpg",
+  "location" : {"name":"Paris, TN USA ", "lat":15, "lng":9}
 }

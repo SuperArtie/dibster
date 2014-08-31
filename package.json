@@ -25,7 +25,7 @@
     "url": "https://github.com/mlfryman/dibster"
   },
   "author": "Melanie Fryman <melanie@frymanet.com>",
-  "collaborators":"Nathan Vasquez <nathan.superartie@gmail.com>, Matt Keef <mkeef1@gmail.com>, Juan Rodriguez <juanjobkr@gmail.com>",
+  "collaborators": "Nathan Vasquez <nathan.superartie@gmail.com>, Matt Keef <mkeef1@gmail.com>, Juan Rodriguez <juanjobkr@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mlfryman/dibster/issues"
@@ -43,10 +43,12 @@
     "jade": "^1.5.0",
     "less-middleware": "^1.0.4",
     "lodash": "^2.4.1",
+    "mailgun-js": "^0.5.4",
     "moment": "^2.8.2",
     "mongodb": "^1.4.9",
     "morgan": "^1.2.3",
-    "multiparty": "^3.3.2"
+    "multiparty": "^3.3.2",
+    "twilio": "^1.7.0"
   },
   "devDependencies": {
     "blanket": "^1.1.6",
