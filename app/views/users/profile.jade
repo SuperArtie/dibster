@@ -7,5 +7,24 @@ block content
         .col-xs-12
           h1#header Your Profile
     .row
-
+      .col-xs-5
+        .panel.panel-primary
+          .panel-heading
+            h3.panel-title: a(href='/profile/edit') Edit Profile
+          .panel-body
+            ul.list-group
+              li.list-group-item
+                | Email:&nbsp
+                | #{user.email}
+              li.list-group-item
+                | Phone:&nbsp
+                | #{user.phone}
+              li.list-group-item
+                | Location:&nbsp
+                a(href=user.location.name, target='_blank')= user.location.name
+      .col-xs-2
+      .col-xs-5
+        .photo
+          a.thumbnail(href='#')
+            img(src=user.photo)
 block scripts

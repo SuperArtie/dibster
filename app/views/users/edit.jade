@@ -1,4 +1,3 @@
-// Edit profile view
 extends ../shared/template
 block content
   .container
@@ -11,8 +10,8 @@ block content
         form(role='form', method='post', action='/profile')
           input(type='hidden', name='_method', value='put')
           .form-group
-            label(for='name') Name
-            input.form-control#name(type='text', name='name', value=user.name, autofocus=true)
+            label(for='name') Username
+            input.form-control#username(type='text', name='username', value=user.username, autofocus=true)
           .form-group
             label(for='email') Email
             input.form-control#email(type='email', name='email', value=user.email)
@@ -23,11 +22,12 @@ block content
             label(for='photo') Photo
             input.form-control#photo(type='text', name='photo', value=user.photo)
           .form-group
-            label(for='location') Location
-            input#location.form-control(type='text', placeholder='Nashville, TN', name='loc')
-            input#locationLat.form-control(type='hidden', name='lat')
-            input#locationLng.form-control(type='hidden', name='lng')
+            label(for='location[name]') Location
+            input#location.form-control(type='text', placeholder='Nashville, TN' ='location[name]', value=user.location.name)
+            input#locationLat.form-control(type='hidden', name='location[lat]')
+            input#locationLng.form-control(type='hidden', name='location[lng]')
           button.btn.btn-success(type='submit') Edit Profile
       .col-xs-6
 
 block scripts
+  script(src='/js/user/edit.js')

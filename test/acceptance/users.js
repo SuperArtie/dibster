@@ -40,6 +40,73 @@ describe('users', function(){
     });
   });
 
+    describe('get /profile/edit', function(){
+    it('should show the edit profile page', function(done){
+      request(app)
+      .get('/profile/edit')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('melanie@frymanet.com');
+        expect(res.text).to.include('Email');
+        expect(res.text).to.include('Phone');
+        done();
+      });
+    });
+  });
+
+  describe('put /profile', function(){
+    it('should edit the profile', function(done){
+      request(app)
+      .post('/profile')
+      .send('_method=put&email=melanie%40frymanet.com&phone=123456789&photo=photourl')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile');
+        done();
+      });
+    });
+  });
+
+  describe('get /profile', function(){
+    it('should show the profile', function(done){
+      request(app)
+      .get('/profile')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+  });
+
+  describe('get /users/mlfryman', function(){
+    it('should show a specific user', function(done){
+      request(app)
+      .get('/users/mlfryman')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('melanie@frymanet.com');
+        done();
+      });
+    });
+  });
+
+  describe('post /messages/3', function(){
+    it('should send a user a message', function(done){
+      request(app)
+      .post('/messages/000000000000000000000002')
+      .set('cookie', cookie)
+      .send('mtype=text&message=hey')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/users/mlfryman');
+        done();
+      });
+    });
+  });
 // Last bracket
 });
 

@@ -58,9 +58,9 @@ exports.profile = function(req, res){
   res.render('users/profile');
 };
 
-exports.viewProfile = function(req, res){
-  User.viewProfile(req.params.username, function(err, user){
-    res.render('users/public', {publicUser: user});
+exports.client = function(req, res){
+  User.findOne({name:req.params.username}, function(err, client){
+    res.render('users/client', {client: client});
   });
 };
 

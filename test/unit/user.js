@@ -82,6 +82,5 @@ describe('User', function(){
       });
     });
   });
-
 // Last bracket
 });

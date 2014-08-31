@@ -36,9 +36,9 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/profile/edit', users.edit);
-  app.put('/profile/edit', users.editProfile);
+  app.put('/profile', users.editProfile);
   app.get('/profile', users.profile);
-  app.get('/user/:username', users.viewProfile);
+  app.get('/user/:username', users.client);
   app.post('/message/:userId', users.send);
   app.get('/message/:msgId', users.readMessage);
   app.get('/messages', users.displayMessages);
