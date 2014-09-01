@@ -106,3 +106,9 @@ exports.readMessage = function(req, res){
     res.render('users/message', {msg:msg, moment:moment});
   });
 };
+
+exports.deleteItem = function(req, res){
+  Item.deleteById(req.params.itemId, function(){
+    res.redirect('/profile');
+  });
+};

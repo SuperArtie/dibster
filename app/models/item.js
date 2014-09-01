@@ -50,10 +50,12 @@ Item.browse = function(filter, cb){
   });
 };
 
-Item.destroy = function(id, cb){
-  var _id = Mongo.ObjectID(id);
-  Item.collection.remove({_id:_id}, cb);
+Item.deleteById = function(itemId, cb){
+  var _id = Mongo.ObjectID(itemId);
+  Item.collection.findAndRemove({_id:_id}, cb);
 };
+
+
 
 module.exports = Item;
 

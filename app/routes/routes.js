@@ -9,7 +9,6 @@ var morgan         = require('morgan'),
     security       = require('../lib/security'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
-    // items          = require('../controllers/items'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -42,6 +41,7 @@ module.exports = function(app, express){
   app.post('/message/:userId', users.send);
   app.get('/message/:msgId', users.readMessage);
   app.get('/messages', users.displayMessages);
+  app.delete('/items/:itemId', users.deleteItem);
   app.get('/items/new', users.newItem);
   app.post('/items', users.saveItem);
   app.get('/browse', users.browse);

@@ -10,13 +10,12 @@
       ul.nav.navbar-nav
         li: a(href='/about') About
         li: a(href='/faq') FAQ
+        li: a(href='/browse') Browse
       ul.nav.navbar-nav.navbar-right.nav-pills
         if user
           li: a(href='/messages') Inbox
               span.badge #{(unread > 0) ? unread : null}
-          li: a(href='/profile') Profile
-          //- li: a(href='/profile/edit') Edit Profile
-          li: a(href='/#') Browse
+          li: a(href='/items/new') Add Item
           li.divider
           li: a(href='/profile')= user.email
           li
@@ -27,4 +26,3 @@
         else
           li: a(href='/register') Register
           li: a(href='/login') Login
-

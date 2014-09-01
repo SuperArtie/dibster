@@ -33,7 +33,8 @@ block content
     .row
       h3 Items
       .col-xs-12.user-item-list
-        h3 #{user.username}'s Items
+        span.h3.cap #{user.username}'s
+          | Items
         .table-responsive
           table.table.table-hover.user-items
             thead
@@ -57,7 +58,7 @@ block content
                   td= item.isAvailable
                   //- if user._id === owner._id
                   td
-                    form(action='/items/'+item._id.toString(), method='POST', onsubmit="return confirm('Are you sure you want to delete item?')")
+                    form(action='/items/#{item._id}', method='POST', onsubmit="return confirm('Are you sure you want to delete item?')")
                       input(type='hidden', name='_method', value='delete')
                       button.alert.del-but x
 block scripts
