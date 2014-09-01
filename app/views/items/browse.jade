@@ -5,16 +5,19 @@ block content
   table
     thead
       th name
+      th location
       th picture
       th category
       th tags
       th date
     tbody
       each item in items
-        tr
+        tr(data-loc=item.loc, data-lat=item.lat, data-lng=item.lng)
           td= item.name
+          td= item.loc
           td.photo.thumbnail(style='background-image:url(#{item.photo})')
           td= item.category
           td= item.tags
           td= moment(item.datePosted).format('MM/DD/YYYY')
-          
+block scripts
+  script(src='/js/user/browse.js')
