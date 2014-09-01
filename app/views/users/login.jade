@@ -4,14 +4,17 @@ block content
     #banner.page-header
       .row
         .col-xs-12
-          h1#header Dibster
+          h1#header Dibstr
     .row
       .col-xs-4
       .col-xs-4
         form.form-signin(role='form', method='post', action='/login')
-          h2.form-signin-heading Please sign in
-          input.form-control#email(type='email', name='email', placeholder='Email address', required=true, autofocus=true)
-          input.form-control#password(type='password', name='password', placeholder='Password', required=true)
-          button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+          fieldset
+            h2.form-signin-heading Please login
+            input.form-control#email(type='email', name='email', placeholder='Email address', required=true, autofocus=true)
+            br
+            input.form-control#password(type='password', name='password', placeholder='Password', required=true)
+            br
+            button.btn.btn-sm.btn-primary.btn-block(type='submit') Login
       .col-xs-4
 block scripts

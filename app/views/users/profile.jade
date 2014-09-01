@@ -5,12 +5,15 @@ block content
     #banner.page-header
       .row
         .col-xs-12
-          h1#header Your Profile
+          h1#header #{user.username}'s Profile
     .row
       .col-xs-5
         .panel.panel-primary
           .panel-heading
+            //- if user._id === client._id
             h3.panel-title: a(href='/profile/edit') Edit Profile
+            //- else
+              //- h3.panel-title Contact Infomation
           .panel-body
             ul.list-group
               li.list-group-item
@@ -28,25 +31,33 @@ block content
           a.thumbnail(href='#')
             img(src=user.photo)
     .row
-      h3 Items (rob schneider)
-      .col-xs-12
-        table
-          thead
-            th name
-            th description
-            th photo
-            th category
-            th tags
-            th date posted
-            th isAvailable?
-          tbody
-            each item in items
-              tr
-                td: a(href='items/#{item._id}')= item.name
-                td= item.description
-                td.photo.thumbnail(style='background-image:url(#{item.photo})')
-                td= item.category
-                td= item.tags
-                td= moment(item.datePosted).format('MM/DD/YYYY')
-                td= isAvailable
+      h3 Items
+      .col-xs-12.user-item-list
+        h3 #{user.username}'s Items
+        .table-responsive
+          table.table.table-hover.user-items
+            thead
+              th Picture
+              th Name
+              th Date Added
+              th Category
+              th Description
+              th Tags
+              th isAvailable?
+              th Remove
+            tbody
+              each item in items
+                tr
+                  td: a(href='/items/#{item._id}'): img(class='pic-show',src= item.photo)
+                  td: a(href='/items/#{item._id}')= item.name
+                  td= moment(item.datePosted).format('MM/DD/YYYY')
+                  td= item.category
+                  td= item.description
+                  td= item.tags.join(', ')
+                  td= item.isAvailable
+                  //- if user._id === owner._id
+                  td
+                    form(action='/items/'+item._id.toString(), method='POST', onsubmit="return confirm('Are you sure you want to delete item?')")
+                      input(type='hidden', name='_method', value='delete')
+                      button.alert.del-but x
 block scripts

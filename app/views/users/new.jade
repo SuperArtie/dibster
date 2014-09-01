@@ -4,24 +4,27 @@ block content
     #banner.page-header
       .row
         .col-xs-12
-          h1#header Register
+          h1#header Dibstr
     .row
-      form.form-horizontal(role='form', method='post', action='/register')
-        fieldset
-          legend Register
-          .form-group
-            label.col-lg-2.control-label(for='email') Email
-            .col-lg-10
-              input#email.form-control(type='text', name='email', placeholder='Email Address')
-          .form-group
-            label.col-lg-2.control-label(for='username') Username
-            .col-lg-10
-              input#username.form-control(type='text', name='username', placeholder='username')
+      .col-xs-4
+      .col-xs-4
+        form(role='form', method='post', action='/register', enctype='multipart/form-data')
+          fieldset
+            h2.legend Register
+            .form-group
+              label(for='username') Choose Username
+              input#username.form-control(type='text', name='username', autofocus=true)
               span.help-block
                 | Your username is public.
-          .form-group
-            label.col-lg-2.control-label(for='password') Password
-            .col-lg-10
-              input#password.form-control(type='password',name='password', placeholder='Password')
-          button.btn.btn-lg.btn-primary.btn-block(type='submit') Register
-block scripts
+            .form-group
+              label.control-label(for='email') Enter Email
+              input#email.form-control(type='text', name='email')
+            .form-group
+              label.control-label(for='password') Enter Password
+              input#password.form-control(type='password',name='password')
+            .form-group
+              label Select Profile Picture
+              input(type='file', name='photo')#photo
+            button.btn.btn-md.btn-primary.btn-block(type='submit') Register
+      .col-xs-4
+  block scripts
