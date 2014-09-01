@@ -25,9 +25,8 @@ describe('Item', function(){
 
   describe('constructor', function(){
     it('should create a new Item object', function(){
-      var
-          o = {name:'Test', description:'This is a test.', photo:'url', cateogy:'category 1', tags:'tag1, tag2', ownerId:'000000000000000000000001'},
-          i    = new Item(o);
+      var o = {name:'Test', description:'This is a test.', photo:'url', cateogy:'category 1', tags:'tag1, tag2'},
+          i = new Item('000000000000000000000001', o);
       expect(i).to.be.instanceof(Item);
       expect(i.name).to.equal('Test');
       expect(i.description).to.equal('This is a test.');
@@ -36,7 +35,6 @@ describe('Item', function(){
       expect(i.photo).to.equal('url');
       expect(i.datePosted).to.be.instanceof(Date);
       expect(i.ownerId).to.be.instanceof(Mongo.ObjectID);
-      expect(i.isForSale).to.be.false;
       expect(i.isOffered).to.be.false;
       expect(i.isAvailable).to.be.true;
     });
@@ -44,8 +42,8 @@ describe('Item', function(){
 
   describe('.create', function(){
     it('should create a new Item & save it in the database', function(done){
-      var testItem = {name:'Test', description:'This is a test.', photo:'url', category:'category 1', tags:'tag1, tag2', ownerId:'000000000000000000000001'};
-      Item.create(testItem, function(err, item){
+      var testItem = {name:'Test', description:'This is a test.', photo:'url', category:'category 1', tags:'tag1, tag2'};
+      Item.create('000000000000000000000001', testItem, function(err, item){
         console.log('--------TEST ITEM-------');
         console.log(testItem);
         expect(item._id).to.be.instanceof(Mongo.ObjectID);

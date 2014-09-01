@@ -48,33 +48,16 @@ exports.edit = function(req, res){
   res.render('users/edit');
 };
 
+exports.dashboard = function(req, res){
+  Item.findAllByOwner(res.locals.user._id, function(err, items){
+    res.render('users/dashboard', {items:items, moment:moment});
+  });
+};
+
 exports.editProfile = function(req, res){
   res.locals.user.save(req.body, function(){
     console.log('~~~~~~user:' + res.locals.user);
-    res.redirect('/profile');
-  });
-};
-
-exports.newItem = function(req, res){
-  res.render('items/new');
-};
-
-exports.saveItem = function(req, res){
-  Item.create(res.locals.user._id, req.body, function(){
-    res.redirect('/items');
-  });
-};
-
-exports.profile = function(req, res){
-  Item.findAllByOwner(res.locals.user._id, function(err, items){
-    res.render('users/profile', {items:items, moment:moment});
-  });
-};
-
-exports.browse = function(req, res){
-  Item.browse({isAvailable:true}, function(err, items){
-    console.log(items);
-    res.render('items/browse', {items:items, moment:moment});
+    res.redirect('/dashboard');
   });
 };
 
@@ -107,8 +90,3 @@ exports.readMessage = function(req, res){
   });
 };
 
-exports.deleteItem = function(req, res){
-  Item.deleteById(req.params.itemId, function(){
-    res.redirect('/profile');
-  });
-};

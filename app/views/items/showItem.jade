@@ -1,39 +1,48 @@
 extends ../shared/template
 block content
-  .row
-    .col-xs-12
-      h2: a(href='')= user.profile
-      h5=
-  .row
-    .col-xs-2
-      a.thumbnail(href='#')
-        img(src=user.photo)
-    .col-xs-10
-
-  .row
-    .col-xs-8
-      #map
-    .col-xs-3
-  .row
-    .col-xs-12
-      table.table.table-striped.table-hover
-        thead
-          tr
-            th Item Name
-            th Item Description
-            th Location
-            th Category
-            th Tags
-        tbody
-          tr
-            td= item.name
-            td=item.description
-               img(src=item.photo)
-            td= user.Location
-            td=item.category
-            td=item.tags
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h1#header= item.name
     .row
-      form(method='post', action='')
-        button.btn.btn-primary(type='submit') Bid
+      .col-xs-6
+        .list-group
+          .list-group-item.active
+            | Details
+          .list-group-item
+            | Location:&nbsp
+            | #{item.loc}
+          .list-group-item
+            | Date Posted:&nbsp
+            | #{item.datePosted}
+          .list-group-item
+            | Category:&nbsp
+            | #{item.category}
+          .list-group-item
+            | Tags:&nbsp
+            | #{item.tags}
+          .list-group-item
+            | Description:&nbsp
+            | #{item.description}
+      .col-xs-6
+        .row
+          .col-xs-12
+           img(class='pic-show',src= item.photo)
+        if user._id.toString() !== item.ownerId.toString()
+          .row
+            .col-xs-12
+              form(role='form', method='post', action='/bid')
+                h2.legend Want this item?
+                          | Offer an item to trade:
+                .form-group
+                  input.form-control#sItem(type='hidden' name='sItem' value=item._id)
+                  input.form-control#seller(type='hidden' name='seller' value=item.ownerId.toString())
+                  input.form-control#bidder(type='hidden' name='bidder' value=user._id.toString())
+                  label(for='bItem') Your items for bid
+                    select.form-control#bItem(name='bItem')
+                      each item in items
+                        if item.isAvailable
+                          option(value=item._id)= item.name
+                button.btn.btn-md.btn-success.btn-block(type='submit') Call Dibs!!!
 
-block scripts

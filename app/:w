@@ -1,0 +1,53 @@
+extends ../shared/template
+block content
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h1#header= item.name
+    .row
+      .col-xs-6
+        .list-group
+          .list-group-item.active
+            | Details
+          .list-group-item
+            | Location:&nbsp
+            | #{item.loc}
+          .list-group-item
+            | Date Posted:&nbsp
+            | #{item.datePosted}
+          .list-group-item
+            | Category:&nbsp
+            | #{item.category}
+          .list-group-item
+            | Tags:&nbsp
+            | #{item.tags}
+          .list-group-item
+            | Description:&nbsp
+            | #{item.description}
+      .col-xs-6
+        .row
+          .col-xs-12
+           img(class='pic-show',src= item.photo)
+        .row
+          .col-xs-12
+            form(role='form', method='post', action='/bid')
+              fieldset
+                h2.legend Select an item to trade:
+                .form-group
+                  input#bidItems.form-control(type='text', name='username', autofocus=true)
+                    .dropdown
+                      button#dropdownMenu1.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+                        | Your Items
+                        span.caret
+                      ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu1')
+                        each item in items
+                          if item.isAvailable
+                            li(role='presentation')
+                              a(role='menuitem', tabindex='-1', href='#')= item.name
+                          else
+                            li.disabled(role='presentation')
+                              a(role='menuitem', tabindex='-1', href='#')= item.name
+                    br
+                    button.btn.btn-md.btn-success.btn-block(type='submit') Call Dibs!!!
+
