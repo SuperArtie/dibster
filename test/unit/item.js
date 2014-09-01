@@ -84,15 +84,6 @@ describe('Item', function(){
     });
   });
 
-  describe('.findAvailable', function(){
-    it('should find a user\'s available items in the database', function(done){
-      Item.findAvailable('000000000000000000000001', function(err, items){
-        expect(items).to.have.length(3);
-        done();
-      });
-    });
-  });
-
   // TODO: write .destroy test
 
 // Last bracket

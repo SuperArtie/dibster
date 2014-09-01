@@ -58,7 +58,7 @@ describe('User', function(){
       });
     });
   });
-
+/*
   describe('#send', function(){
     it('should send a text message to a user', function(done){
       User.findById('000000000000000000000001', function(err, sender){
@@ -82,5 +82,6 @@ describe('User', function(){
       });
     });
   });
+  */
 // Last bracket
 });

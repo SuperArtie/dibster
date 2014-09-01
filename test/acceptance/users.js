@@ -88,16 +88,16 @@ describe('users', function(){
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(200);
-        expect(res.text).to.include('melanie@frymanet.com');
+        expect(res.text).to.include('mlfryman');
         done();
       });
     });
   });
 
-  describe('post /messages/3', function(){
+  describe('post /message/3', function(){
     it('should send a user a message', function(done){
       request(app)
-      .post('/messages/000000000000000000000002')
+      .post('/message/000000000000000000000001')
       .set('cookie', cookie)
       .send('mtype=text&message=hey')
       .end(function(err, res){

@@ -38,14 +38,14 @@ module.exports = function(app, express){
   app.get('/profile/edit', users.edit);
   app.put('/profile', users.editProfile);
   app.get('/profile', users.profile);
-  app.get('/user/:username', users.client);
+  app.get('/users/:username', users.client);
   app.post('/message/:userId', users.send);
   app.get('/message/:msgId', users.readMessage);
   app.get('/messages', users.displayMessages);
-/*
-  app.get('/items/new', items.new);
-  app.post('/items', items.create);
-*/
+  app.get('/items/new', users.newItem);
+  app.post('/items', users.saveItem);
+  app.get('/browse', users.browse);
+
   console.log('Express: Routes Loaded');
 };
 

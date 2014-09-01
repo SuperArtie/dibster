@@ -8,7 +8,6 @@
   "ownerId" : {"$oid":"000000000000000000000001"},
   "datePosted" : {"$date":477295200000},
   "isOffered" : "true",
-  "isForSale" : "false",
   "isAvailable" : "false"
 }
 {
@@ -21,7 +20,6 @@
   "ownerId" : {"$oid":"000000000000000000000001"},
   "datePosted" : {"$date":479295200000},
   "isOffered" : "false",
-  "isForSale" : "true",
   "isAvailable" : "true"
 }
 {
@@ -34,7 +32,6 @@
   "ownerId" : {"$oid":"000000000000000000000002"},
   "datePosted" : {"$date":477295200000},
   "isOffered" : "true",
-  "isForSale" : "false",
   "isAvailable" : "false"
 }
 {
@@ -47,7 +44,6 @@
   "ownerId" : {"$oid":"000000000000000000000002"},
   "datePosted" : {"$date":477295200000},
   "isOffered" : "false",
-  "isForSale" : "true",
   "isAvailable" : "true"
 }
 {
@@ -60,7 +56,6 @@
   "ownerId" : {"$oid":"000000000000000000000002"},
   "datePosted" : {"$date":477295200000},
   "isOffered" : "false",
-  "isForSale" : "true",
   "isAvailable" : "true"
 }
 {
@@ -73,6 +68,5 @@
   "ownerId" : {"$oid":"000000000000000000000001"},
   "datePosted" : {"$date":477295200000},
   "isOffered" : "false",
-  "isForSale" : "true",
   "isAvailable" : "true"
 }

@@ -21,10 +21,32 @@ block content
                 | #{user.phone}
               li.list-group-item
                 | Location:&nbsp
-                a(href=user.location.name, target='_blank')= user.location.name
+                | #{user.loc}
       .col-xs-2
       .col-xs-5
         .photo
           a.thumbnail(href='#')
             img(src=user.photo)
+    .row
+      h3 Items (rob schneider)
+      .col-xs-12
+        table
+          thead
+            th name
+            th description
+            th photo
+            th category
+            th tags
+            th date posted
+            th isAvailable?
+          tbody
+            each item in items
+              tr
+                td: a(href='items/#{item._id}')= item.name
+                td= item.description
+                td.photo.thumbnail(style='background-image:url(#{item.photo})')
+                td= item.category
+                td= item.tags
+                td= moment(item.datePosted).format('MM/DD/YYYY')
+                td= isAvailable
 block scripts

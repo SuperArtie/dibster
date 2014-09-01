@@ -75,22 +75,22 @@ User.prototype.messages = function(cb){
 };
 
 User.prototype.send = function(receiver, obj, cb){
-  switch(obj.mtype){
+/*  switch(obj.mtype){
     case 'text':
       sendText(receiver.phone, obj.message, cb);
       break;
     case 'email':
       sendEmail(this.email, receiver.email, 'Message from Dibster', obj.message, cb);
       break;
-    case 'internal':
+    case 'internal':*/
       Message.send(this._id, receiver._id, obj.message, cb);
-  }
+ // }
 };
 
 module.exports = User;
 
 // PRIVATE HELPER FUNCTIONS //
-
+/*
 function sendText(to, body, cb){
   if(!to){return cb();}
 
@@ -108,3 +108,4 @@ function sendEmail(from, to, subject, message, cb){
 
   mailgun.messages().send(data, cb);
 }
+*/

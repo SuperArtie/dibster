@@ -1,0 +1,20 @@
+extends ../shared/template
+block content
+  h2 Browse da itumz
+  #map
+  table
+    thead
+      th name
+      th picture
+      th category
+      th tags
+      th date
+    tbody
+      each item in items
+        tr
+          td= item.name
+          td.photo.thumbnail(style='background-image:url(#{item.photo})')
+          td= item.category
+          td= item.tags
+          td= moment(item.datePosted).format('MM/DD/YYYY')
+          

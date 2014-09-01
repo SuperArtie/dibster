@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../models/user'),
+    Item = require('../models/item'),
     Message = require('../models/message'),
     moment = require('moment');
 
@@ -54,12 +55,31 @@ exports.editProfile = function(req, res){
   });
 };
 
+exports.newItem = function(req, res){
+  res.render('items/new');
+};
+
+exports.saveItem = function(req, res){
+  Item.create(res.locals.user._id, req.body, function(){
+    res.redirect('/items');
+  });
+};
+
 exports.profile = function(req, res){
-  res.render('users/profile');
+  Item.findAllByOwner(res.locals.user._id, function(err, items){
+    res.render('users/profile', {items:items, moment:moment});
+  });
+};
+
+exports.browse = function(req, res){
+  Item.browse({isAvailable:true}, function(err, items){
+    console.log(items);
+    res.render('items/browse', {items:items, moment:moment});
+  });
 };
 
 exports.client = function(req, res){
-  User.findOne({name:req.params.username}, function(err, client){
+  User.findOne({username:req.params.username}, function(err, client){
     res.render('users/client', {client: client});
   });
 };
@@ -68,7 +88,7 @@ exports.client = function(req, res){
 exports.send = function(req, res){
   User.findById(req.params.userId, function(err, receiver){
     res.locals.user.send(receiver, req.body, function(){
-      res.redirect('/user/' + receiver.email);
+      res.redirect('/users/' + receiver.username);
     });
   });
 };

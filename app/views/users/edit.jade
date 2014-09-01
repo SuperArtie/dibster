@@ -22,10 +22,10 @@ block content
             label(for='photo') Photo
             input.form-control#photo(type='text', name='photo', value=user.photo)
           .form-group
-            label(for='location[name]') Location
-            input#location.form-control(type='text', placeholder='Nashville, TN' ='location[name]', value=user.location.name)
-            input#locationLat.form-control(type='hidden', name='location[lat]')
-            input#locationLng.form-control(type='hidden', name='location[lng]')
+            label(for='photo') Location
+            input.form-control#loc(type='text', name='loc', value=user.loc)
+            input.form-control#lat(type='hidden', name='lat')
+            input.form-control#lng(type='hidden', name='lng')
           button.btn.btn-success(type='submit') Edit Profile
       .col-xs-6
 

@@ -7,9 +7,9 @@
     $('form').submit(getLocation);
   });
   function getLocation(e){
-    var lat = $('#locationLat').val();
+    var lat = $('#lat').val();
     if(!lat){
-      var name = $('#location').val();
+      var name = $('#loc').val();
       geocode(name);
       e.preventDefault();
     }
@@ -21,9 +21,9 @@
       var loc  = results[0].formatted_address,
           lat  = results[0].geometry.location.lat(),
           lng  = results[0].geometry.location.lng();
-      $('#location').val(loc);
-      $('#locationLat').val(lat);
-      $('#locationLng').val(lng);
+      $('#loc').val(loc);
+      $('#lat').val(lat);
+      $('#lng').val(lng);
       $('form').submit();
       console.log(name, lat, lng);
     });

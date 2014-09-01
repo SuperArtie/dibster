@@ -29,11 +29,11 @@ block content
             td= item.name
             td=item.description
                img(src=item.photo)
-            td= user.Location1
+            td= user.Location
             td=item.category
             td=item.tags
     .row
       form(method='post', action='')
-        button(type='submit', class='btn btn-default') Bid
+        button.btn.btn-primary(type='submit') Bid
 
 block scripts
