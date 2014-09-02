@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html lang="en" class="no-js">
+	<head><link rel="stylesheet" type="text/css" href="http://ianlunn.co.uk/wp-content/cache/minify/000000/c2eef/default.include.33ed2f.css" media="all" />
+
+		<title>hover.css Tutorial and Introduction | Ian Lunn - Front End Developer</title>
+		<meta charset="UTF-8" />
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="pingback" href="http://ianlunn.co.uk/xmlrpc.php" />
+		<link rel="shortcut icon" href="http://ianlunn.co.uk/wp-content/themes/ianlunn2015/images/favicon.ico"/>
+
+		
+		<!--[if lt IE 9]>
+			<script src="http://ianlunn.co.uk/wp-content/themes/ianlunn2015/js/old-ie.js" media="all"></script>
+		<![endif]-->
+		<script type="text/javascript" src="http://ianlunn.co.uk/wp-content/themes/ianlunn2015/js/modernizr.js"></script>
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-11991680-1', 'ianlunn.co.uk');
+		  ga('send', 'pageview');
+
+		</script>
+		
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.5.2.6 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://ianlunn.co.uk/articles/hover-css-tutorial-introduction/" />
+<link rel="author" href="https://plus.google.com/+IanLunn/"/>
+<link rel="publisher" href="https://plus.google.com/+IanLunn/"/>
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="hover.css Tutorial and Introduction - Ian Lunn - Front End Developer" />
+<meta property="og:description" content="hover.css is a collection of CSS3 hover effects that can be easily applied to your own website&#8217;s elements, such as buttons, logos and featured images. At the time of writing there are over 40 effects to choose from, including 2D transforms, border transitions, shadow and glow transitions, speech bubbles, and page curls. hover.css is a &hellip;" />
+<meta property="og:url" content="http://ianlunn.co.uk/articles/hover-css-tutorial-introduction/" />
+<meta property="og:site_name" content="Ian Lunn - Front End Developer" />
+<meta property="article:section" content="Code Tutorials" />
+<meta property="article:published_time" content="2014-01-15T19:31:43+00:00" />
+<meta property="article:modified_time" content="2014-01-15T19:34:42+00:00" />
+<meta property="og:updated_time" content="2014-01-15T19:34:42+00:00" />
+<meta property="og:image" content="http://ianlunn.co.uk/wp-content/uploads/hover.jpg" />
+<meta property="og:image" content="http://ianlunn.co.uk/wp-content/uploads/example-button.png" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="@IanLunn"/>
+<meta name="twitter:domain" content="Ian Lunn - Front End Developer"/>
+<meta name="twitter:creator" content="@IanLunn"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Ian Lunn - Front End Developer &raquo; hover.css Tutorial and Introduction Comments Feed" href="http://ianlunn.co.uk/articles/hover-css-tutorial-introduction/feed/" />
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ianlunn.co.uk/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ianlunn.co.uk/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.8.4" />
+<link rel='shortlink' href='http://ianlunn.co.uk/?p=3894' />
+	</head>
+	<body class="single single-post postid-3894 single-format-standard">
+		<header role="banner">
+			<div class="group">
+				<a class="logo" href="http://ianlunn.co.uk/">
+					<img src="http://ianlunn.co.uk/wp-content/themes/ianlunn2015/images/logo.png" width="52" height="52" /><!--[if gte IE 9]><!--><svg viewBox="0 0 52 52"  version="1.1"
+	xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+	x="0px" y="0px" width="52px" height="52px"
+>
+	<g>
+		<g>
+			<path class="circle" d="M 5.3962 26 C 5.3962 14.6207 14.6207 5.3962 26 5.3962 C 37.3793 5.3962 46.6038 14.6207 46.6038 26 C 46.6038 37.3793 37.3793 46.6038 26 46.6038 C 14.6207 46.6038 5.3962 37.3793 5.3962 26 ZM 0 26 C 0 40.3596 11.6404 52 26 52 C 40.3596 52 52 40.3596 52 26 C 52 11.6404 40.3596 0 26 0 C 11.6404 0 0 11.6404 0 26 Z" fill="#2098D1"/>
+			<g>
+				<path d="M 15 22 L 24 22 L 24 38 L 15 38 L 15 22 Z" fill="#ffffff"/>
+				<path d="M 28 14 L 37 14 L 37 38 L 28 38 L 28 14 Z" fill="#ffffff"/>
+			</g>
+		</g>
+	</g>
+</svg><!--<![endif]--><div class="logo-name">
+						<h1>Ian Lunn</h1><h2>Front End Developer</h2>
+					</div>
+				</a>
+
+					<nav role="navigation" class="menu">
+
+					
+					<ul id="menu-nav_menu" class=""><li id="menu-item-4166" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4166"><a title="About Ian Lunn &#8211; Freelance Front End Developer" href="http://ianlunn.co.uk/about/">About</a></li>
+<li id="menu-item-4167" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4167"><a title="Portfolio of Front End Development Projects" href="http://ianlunn.co.uk/">Portfolio</a></li>
+<li id="menu-item-4168" class="lab-menu-item menu-item menu-item-type-custom menu-item-object-custom menu-item-4168"><a title="Open Source Projects, Demos, and Experiments" href="/lab/">Code Lab</a></li>
+<li id="menu-item-4164" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-4164"><a title="Articles on Front End Development and Other Areas of the Web" href="http://ianlunn.co.uk/articles/">Articles</a></li>
+<li id="menu-item-4165" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4165"><a title="Send a Message or Project Request to Ian" href="http://ianlunn.co.uk/contact/">Contact</a></li>
+</ul>				</nav>
+			</div>
+		</header>
+
+		<main id="main" role="main">
+
+
+  
+  <div class="intro" style=" ">
+    <div class="intro-content">
+            <header >
+        <div style="border-left-color: #">
+          <h1>hover.css Tutorial and Introduction</h1>
+          <h2 class="date-and-author"><time pubdate datetime="2014-01-15" title="January 15th, 2014">January 15th, 2014</time> by <a href="/about/" title="About" rel="author">Ian Lunn</a></h2>
+        </div>
+      </header>
+    </div>
+  </div>
+
+	<div class="two-column group">
+
+    <article>
+      
+
+            <div class="right-column">
+              <div class="ad aligncenter">
+                <div class="textcenter">
+
+									
+                  <a href="http://css3foundations.com/">
+                    <img src="http://ianlunn.co.uk/wp-content/uploads/2013/02/css3foundations-cover.jpg" alt="css3foundations-cover" class="size-full wp-image-3141" height="327" width="260">
+                  </a>
+                  <p><small>Learn CSS with Ian's book, <br />CSS3 Foundations</small></p>
+                  <div>
+                    <a class="" href="http://css3foundations.com/">Order your copy →</a>
+                  </div>
+                  <div>
+                    <a class="" href="http://media.wiley.com/product_data/excerpt/43/11183565/1118356543-193.pdf">Read a sample →</a>
+                  </div>
+               </div>
+              </div>
+            </div>
+
+      <div class="content">
+
+        <div class="post-resources"><a class="button download" href="https://github.com/IanLunn/Hover/archive/master.zip" title="Download">Download</a> <a class="button demo" href="http://ianlunn.github.io/Hover/" title="Demo">Demo</a></div><p>hover.css is a collection of CSS3 hover effects that can be easily applied to your own website&#8217;s elements, such as buttons, logos and featured images.</p>
+<p>At the time of writing there are over 40 effects to choose from, including 2D transforms, border transitions, shadow and glow transitions, speech bubbles, and page curls.</p>
+<p><img src="http://ianlunn.co.uk/wp-content/uploads/hover.jpg" alt="hover" width="360" height="92" class="aligncenter size-full wp-image-3897" /></p>
+<p>hover.css is a stylesheet containing many different classes, each offering a different hover effect. If you&#8217;re comfortable with using CSS, then you most likely can jump straight in to using hover.css without the following tutorial. If that&#8217;s the case, you may like to skip further down into the article where I discuss some of the <a href="#default-css-and-hacks">default CSS and hacks</a> used to improve the appearance of hover.css&#8217; effects &#8212; especially on mobile/tablet devices, <a href="#browser-support">browser support</a>, <a href="#sass-support">SASS support</a> and <a href="#grunt-support">Grunt support</a>.</p>
+<h2><a name="how-to">How to Use</a></h2>
+<p>To begin, <a href="https://github.com/IanLunn/Hover/archive/master.zip">download hover.css</a>, or fork/pull the <a href="https://github.com/IanLunn/Hover/">GitHub repo</a> if you prefer.</p>
+<p>Inside the download file you&#8217;ll find all of the contents that make up the <a href="http://ianlunn.github.io/Hover/">hover.css demo</a>.</p>
+<p>Note: In the download file, you&#8217;ll find both a <code>hover.css</code> file and <code>hover-min.css</code>. The latter is a minifed version, which is smaller in size and quicker to download. Minified files are difficult to read so to follow the tutorial, use the <code>hover.css</code> file. Once you&#8217;ve completed the tutorial you can then switch to <code>hover-min.css</code>, which I explain in <a href="#good-practices">Good Practices</a>.</p>
+<h3>Adding hover.css Effects to your Web Page</h3>
+<p>Link hover.css to your web page using the following HTML, placed within the <code>&lt;head&gt;&lt;/head&gt;</code> tags:</p>
+<pre><code>&lt;link href="css/hover.css" rel="stylesheet" media="all"&gt;
+</code></pre>
+<h3>Applying hover.css Effects to an Element</h3>
+<p>Let&#8217;s assume the web page you linked hover.css to has a button on it, made up of the following HTML:</p>
+<pre><code>&lt;a href="#" class="button"&gt;Checkout&lt;/a&gt;
+</code></pre>
+<p>And it currently has this CSS applied to it via the <code>button</code> class:</p>
+<pre><code>.button {
+    display: inline-block;
+    padding: 1em;
+    background-color: #79BD9A;
+    text-decoration: none;
+    color: white;
+}
+</code></pre>
+<div id="attachment_3898" style="width: 103px" class="wp-caption aligncenter"><img src="http://ianlunn.co.uk/wp-content/uploads/example-button.png" alt="An example button prior to adding an hover.css effect" width="93" height="50" class="size-full wp-image-3898" /><p class="wp-caption-text">An example button</p></div>
+<p>The button has a nice colour but it isn&#8217;t that interesting or enticing for the user! You can make the button much more appealing with a hover.css effect. Let&#8217;s apply the Float effect from hover.css.</p>
+<p>In the <code>hover.css</code> file, search for the Float effect.</p>
+<p>Note: Each effect has a comment above it with its name, such as <code>/* Float */</code>. An effect&#8217;s class name is a lower case version of its name, in this case <code>.float</code> (the dot represents a class). Where a name has a space in it, such as Grow Rotate, then the space is replaced with a hyphen <code>-</code>, like so: <code>.grow-rotate</code>.</p>
+<p>The Float effect uses the following CSS:</p>
+<pre><code>/* Float */
+
+.float {
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.float:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+</code></pre>
+<p>If you don&#8217;t understand this CSS, don&#8217;t worry (<a href="#default-css-and-hacks">We&#8217;ll take a Deeper Look at the CSS later on</a>). All we need do is apply the class of <code>.float</code> to the button.</p>
+<p>Back in the HTML of the web page, find the button and apply the <code>float</code> class to it:</p>
+<pre><code>&lt;a href="#" class="button float"&gt;Checkout&lt;/a&gt;
+</code></pre>
+<p>The element already had a class of <code>button</code>, so we added the secondary class of <code>float</code> next to it, separated by a space.</p>
+<p>Now, when you hover over the button, it floats! If you&#8217;re not so keen on the Float effect, replace the <code>float</code> class for another hover.css effect.</p>
+<p>Remember to <a href="http://ianlunn.github.io/Hover/">view the demo</a> for a quick sample of all the effects currently available.</p>
+<p>That&#8217;s all you need do to apply hover.css effects to your elements.</p>
+<h2><a name="good-practices">Good Practices</a></h2>
+<p>In the tutorial you just completed, you reference one hover.css effect from the entire collection of effects. If you plan on using only a few effects, then it is better practice to copy and paste those effects into your web page&#8217;s existing stylesheet. That way, the entire hover.css collection isn&#8217;t downloaded when only some of its effects are required &#8212; making your website faster to download.</p>
+<p>If you choose to reference the complete hover.css collection, then when it&#8217;s time to put your web page live, use the minified version of hover.css instead. This makes the file smaller in size so it&#8217;s quicker to download. To use this minified version, change your reference from <code>hover.css</code> to <code>hover-min.css</code>:</p>
+<pre><code>&lt;link href="css/hover-min.css" rel="stylesheet" media="all"&gt;
+</code></pre>
+<h2><a name="default-css-and-hacks">A Deeper Look at the CSS (and some Hacks)</a></h2>
+<p>All hover.cs effects are given default CSS properties that aren&#8217;t directly related to the effect. These default properties give the most desired wide-spread results, but nonetheless you may wish to change them on your own website.</p>
+<h3>display: inline-block</h3>
+<p>A <code>display</code> property is often required for an effect to work. By default, hover.css sets all elements to <code>display: inline-block</code>. You may need to change this to <code>display: block</code> or <code>display: inline</code>depending on your requirements. If the element you&#8217;re applying the effect to already has a <code>display</code> property, then the one applied by the effect can be removed.</p>
+<h3>transform: translateZ(0)</h3>
+<p><code>transform: translateZ(0)</code> is known as a &#8220;performance hack&#8221;. It is often used with CSS3 transforms to improve the performance of those transforms on mobile and tablet devices.</p>
+<h3>box-shadow: 0 0 1px rgba(0, 0, 0, 0)</h3>
+<p>When viewing CSS3 transformed elements on mobile/tablet devices, the edges can sometimes look jagged or a slightly different colour. By applying <code>box-shadow: 0 0 1px rgba(0, 0, 0, 0)</code>, an element is given a transparent box shadow, which causes the edges of that element to look smoother.</p>
+<h2><a name="browser-support">Browser Support</a></h2>
+<p>Many of hover.css&#8217; effects rely on CSS3 features such as transitions, animations, transforms and pseudo-elements. Older browsers still in use today may not fully support effects making use of these technologies.</p>
+<ul>
+<li>Transforms are not supported below Internet Explorer 10</li>
+<li>Transitions and Animations are not supported below Internet Explorer 9</li>
+<li>Psuedo-elements are not supported below Internet Explorer 8</li>
+</ul>
+<p>Aside from the above mentioned browsers, hover.css is supported across all major browsers. Please see <a href="http://caniuse.com">caniuse.com</a> for full support for many web technologies and test your webpages accordingly.</p>
+<h2><a name="sass-support">SASS Support</a></h2>
+<p>hover.css also comes in a SASS flavour, which allows for greater control of its effects, as well as quicker production.</p>
+<p>The <code>hover.css</code> file is generated using SASS Mixins. Each effect is a Mixin so you can add them to your own project quicker. Find them in <code>scss</code> > <code>effects</code>.</p>
+<p>In the <code>scss</code> directory, you&#8217;ll find an <code>_options.scss</code> file which will allow you to specify many default properties such as the default duration for transitions/animations, primary, secondary, and show colours, width and heights for speech bubbles, and so on.</p>
+<h2><a name="grunt-support">Grunt Support</a></h2>
+<p>With the project downloaded, in your command line run <code>grunt</code> for a production environment that includes SASS, auto prefixing, CSS minification, watch, and connect tasks. The connect server can be accessed at <code>http://127.0.0.1:8000</code>.</p>
+<h2>Conclusion</h2>
+<p>hover.css aims to be as simple as possible to apply unique effects to your own web pages. Use it on buttons, logos, featured images and other elements to really draw attention to them.</p>
+<p>Watch <a href="https://github.com/IanLunn/Hover">hover.css on GitHub</a> for the latest updates and newest effects.</p>
+<div class="post-resources"><a class="button download" href="https://github.com/IanLunn/Hover/archive/master.zip" title="Download">Download</a> <a class="button demo" href="http://ianlunn.github.io/Hover/" title="Demo">Demo</a></div>
+        <div class="contribute">
+          <script id='fb073ts'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=IanLunn&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb073ts');</script>
+           <script data-gittip-username="IanLunn" data-gittip-widget="button" src="//gttp.co/v1.js"></script>
+        </div>
+
+        <hr /><div class="author group"><div class="avatar social"><img src="/wp-content/uploads/avatar.jpg" width="140" height="140" /><a href="https://twitter.com/IanLunn" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @IanLunn</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div><div class="bio"><div class="bio-info"><h3>Written by Ian Lunn</h3><p><a rel="author" href="http://ianlunn.co.uk/about/" title="About">Ian Lunn</a> is a freelance Front End Developer. He uses the latest web technologies to build creative and effective websites. Creator of <a href="http://sequencejs.com/" title="Sequence">Sequence.js</a> and author of <a href="http://css3foundations.com" title="CSS3 Foundations">CSS3 Foundations</a>.</p></div><p class="availability"><a class="button full" href="/contact/" title="Send a message or schedule time for your project">Available  September 2014. Get in Touch.</a></div></div><hr /><section id="comments"><h2>Comments</h2><a id="show-comments" href="#comments" title="Show comments">Show comments...</a><div id="disqus_thread"></div></section>      </div>
+		</article>
+	</div>
+
+</main>
+
+<div class="footer group">
+
+	<a class="back-to-top" href="#">Back to top</a>
+
+	<div class="links">
+		<div class="third">
+			<div class="avatar social">
+				<img src="/wp-content/uploads/avatar.jpg" width="70" height="70" />
+			</div>
+
+			<div class="bio">
+				<p class="bio-info">A graduate of Internet Technology, Ian combines his education with 6 years commercial experience in CSS3, HTML5, JavaScript, WordPress, and design to produce creative and effective websites for happy clients over the world.
+				</p>
+				<p>Freelance Front End Developer. Available September 2014. <a class="cta" href="/contact/" title="Contact Ian to schedule time for your project">Hire Now →</a></p>
+			</div>
+		</div><ul class="third social-links">
+
+			<li>
+				<a href="https://twitter.com/IanLunn/" class="icon social twitter" target="_blank"></a>
+				<p>Follow <a href="https://twitter.com/IanLunn/" target="_blank">@IanLunn</a> for web design &amp; development articles, opinions and links</p>
+			</li><li>
+				<a href="https://github.com/IanLunn/" class="icon social github" target="_blank"></a>
+				<p>View <a href="https://github.com/IanLunn/" target="_blank">@IanLunn</a> on GitHub for open-source projects such as <a href="https://github.com/IanLunn/Hover">Hover.css</a>, <a href="https://github.com/IanLunn/Sequence">Sequence.js</a> and <a href="https://github.com/IanLunn/jQuery-Parallax">jQuery Parallax</a></p>
+			</li>
+			<li class="rss">
+				<a href="/feed/" class="icon social rss" target="_blank"></a>
+				<p>Subscribe to the articles <a href="/feed/">RSS Feed</a></p></li>
+		</ul><nav class="third">
+
+			<dl>
+				<dt><a href="http://ianlunn.co.uk/about/">About</a></dt>
+				<dd>Learn about Ian’s skills and philosophy</dd>
+				<dt><a href="http://ianlunn.co.uk/">Portfolio</a></dt>
+				<dd>View Ian’s front end development work</dd>
+				<dt><a href="http://ianlunn.co.uk/articles/">Articles</a></dt>
+				<dd>Read web related articles, opinions & tutorials</dd>
+				<dt><a href="http://ianlunn.co.uk/contact/">Contact</a></dt>
+				<dd>Send a message or project request to Ian</dd>
+			</dl>
+		</nav>
+	</div>
+
+	<small>Unless otherwise stated, content is copyright © 2014 <a href="/">Ian Lunn</a> and code samples are licensed under <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a>.</small>
+</div>
+
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js?ver=1.8.3'></script>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/ianlunn.co.uk\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ...","cached":"1"};
+/* ]]> */
+</script>
+
+
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201436'></script>
+
+<script type="text/javascript">
+  var disqus_identifier = "hover-css-tutorial-introduction";
+</script>
+<script type="text/javascript" src="http://ianlunn.co.uk/wp-content/cache/minify/000000/c2eef/default.include-footer.5d8960.js"></script>
+</body>
+</html>
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Minified using disk
+Page Caching using disk: enhanced
+Database Caching 4/32 queries in 0.005 seconds using disk
+Object Caching 1822/1875 objects using disk
+
+ Served from: ianlunn.co.uk @ 2014-09-01 19:51:22 by W3 Total Cache -->

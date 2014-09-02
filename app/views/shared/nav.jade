@@ -8,21 +8,21 @@
         span.icon-bar
     #navbar-main.navbar-collapse.collapse
       ul.nav.navbar-nav
-        li: a(href='/about') About
-        li: a(href='/faq') FAQ
-        li: a(href='/browse') Browse
+        li: a.float(href='/about') About
+        li: a.float(href='/faq') FAQ
+        li: a.float(href='/browse') Browse
       ul.nav.navbar-nav.navbar-right.nav-pills
         if user
-          li: a(href='/messages') Inbox
+          li: a.float(href='/messages') Inbox
               span.badge #{(unread > 0) ? unread : null}
-          li: a(href='/items/new') Add Item
+          li: a.float(href='/items/new') Add Item
           li.divider
-          li: a(href='/profile')= user.email
+          li: a.float(href='/profile')= user.email
           li
             form.navbar-form(method='post', action='/logout')
               .form-group
                 input(type='hidden', name='_method', value='delete')
-                button.btn.btn-warning.btn-sm Logout
+                button.grow.btn.btn-warning.btn-sm Logout
         else
           li: a(href='/register') Register
           li: a(href='/login') Login

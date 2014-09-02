@@ -1,23 +1,61 @@
 extends ../shared/template
 block content
   h2 Browse da itumz
-  #map
-  table
-    thead
-      th name
-      th location
-      th picture
-      th category
-      th tags
-      th date
-    tbody
-      each item in items
-        tr(data-loc=item.loc, data-lat=item.lat, data-lng=item.lng)
-          td= item.name
-          td= item.loc
-          td.photo.thumbnail(style='background-image:url(#{item.photo})')
-          td= item.category
-          td= item.tags
-          td= moment(item.datePosted).format('MM/DD/YYYY')
+  .col-xs-1
+  .row
+    .col-xs-4
+      form.navbar-form.navbar-left(role='search')
+        .form-group
+          input.form-control(type='text', placeholder='Search')
+          button.btn.btn-default.btn-mini(type='submit')
+            span.glyphicon.glyphicon-search
+          .col-xs-2
+            br
+            br
+        div.dropdown
+          button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+            | Dropdown
+            span.caret
+          ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu1')
+            li(role='presentation')
+              a(role='menuitem', tabindex='-1', href='#') Action
+            li(role='presentation')
+              a(role='menuitem', tabindex='-1', href='#') Another action
+            li(role='presentation')
+              a(role='menuitem', tabindex='-1', href='#') Something else here
+            li.divider(role='presentation')
+            li(role='presentation')
+            a(role='menuitem', tabindex='-1', href='#') Separated link
+    .col-xs-1
+    .col-xs-5
+      #map
+        .col-xs-3
+
+
+  .row
+    .col-xs-1
+    .col-xs-10
+       table.table.table-striped
+        thead
+          th Photo
+          th Item
+          th Owner
+          th Description
+          th Location
+          th Tags
+          th Category
+          th Date
+        tbody
+          each item in items
+            tr(data-loc=item.loc, data-lat=item.lat, data-lng=item.lng)
+              td: a(href='/items/#{item._id}'): img(class='pic-show',src= item.photo)
+              td: a(href='/items/#{item._id}')= item.name
+              td: a(href='/users/#{item.ownerName}')= item.ownerName
+              td= item.description
+              td= item.loc
+              td= item.tags
+              td= item.category
+              td= moment(item.datePosted).format('MM/DD/YYYY')
+                .col-xs-1
 block scripts
   script(src='/js/user/browse.js')

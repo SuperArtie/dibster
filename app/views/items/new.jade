@@ -11,19 +11,19 @@ block content
         form(role='form', method='post', action='/items')
           .form-group
             label(for='name') Name
-            input.form-control#name(type='text', name='name', autofocus=true)
+            input.form-control#name(type='text', name='name', autofocus=true, placeholder='Turtle')
           .form-group
             label(for='description') Description
-            input.form-control#description(type='text', name='description')
+            input.form-control#description(type='text', name='description', placeholder='Good friend and quiet')
           .form-group
             label(for='photo') Photo
-            input.form-control#photo(type='text', name='photo')
+            input.form-control#photo(type='text', name='photo', placeholder='http://www.centroveterinariorondatriana.com/images/tortuga_acuatica.jpg')
           .form-group
             label(for='category') Category
-            input.form-control#category(type='text', name='category')
+            input.form-control#category(type='text', name='category', placeholder='Technology, Cars, Tools, etc...')
           .form-group
             label(for='tags') Tags
-            input.form-control#tags(type='text', name='tags')
+            input.form-control#tags(type='text', name='tags', placeholder=' Cat, Gato, Nokia, etc...')
           button.btn.btn-success(type='submit') Add Item
       .col-xs-6
 
