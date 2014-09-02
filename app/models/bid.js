@@ -19,7 +19,11 @@ Object.defineProperty(Bid, 'collection', {
 Bid.create = function(o, cb){
   var b = new Bid(o);
   Bid.collection.save(b, function(){
-    newEmail(b.seller.email, b.sItem, cb);
+    require('./user').findById(b.seller, function(err, seller){
+      require('./item').findById(b.sItem, function(err, sItem){
+        newEmail(seller.email, sItem, cb);
+      });
+    });
   });
 };
 
@@ -52,24 +56,14 @@ Bid.findById = function(id, cb){
 
 Bid.destroy = function(bid, cb){
   var _id = Mongo.ObjectID(bid._id);
-  require('./item').collection.update({_id:bid.sItem}, {isAvailable:true}, function(){
     Bid.collection.findAndRemove({_id:_id}, cb);
-  });
 };
 
 Bid.accept = function(bid, cb){
-  require('./item').collection.findAndModify({_id:bid.bItem}, {}, {$set: {ownerId:bid.seller, isAvailable:true}}, function(err1, sItem){
-    require('./item').collection.findAndModify({_id:bid.sItem}, {}, {$set: {ownerId:bid.bidder, isAvailable:true}}, function(err2, bItem){
-      require('./user').findById(bid.bidder, function(err, bidder){
-        require('./item').findById(bid.sItem, function(err, sItem){
-          require('./item').collection.update({_id:bid.sItem}, {isAvailable:true}, function(){
-            yayEmail(bidder.email, sItem, function(){
-              yayText(bidder.phone, sItem, function(){
-                Bid.collection.remove({sItem:bid.sItem}, cb);
-              });
-            });
-          });
-        });
+  acceptHelper(bid.bidder, bid.sItem, bid.bItem, function(){
+    require('./item').collection.findAndModify({_id:bid.bItem}, {}, {$set: {ownerId:bid.seller, isAvailable:true}}, function(err1, sItem){
+      require('./item').collection.findAndModify({_id:bid.sItem}, {}, {$set: {ownerId:bid.bidder, isAvailable:true}}, function(err2, bItem){
+        Bid.collection.remove({sItem:bid.sItem}, cb);
       });
     });
   });
@@ -78,6 +72,18 @@ Bid.accept = function(bid, cb){
 module.exports = Bid;
 
 // PRIVATE HELPER FUNCTION //
+
+function acceptHelper(bidder, sItem, bItem, cb){
+  require('./item').collection.update({_id:bItem}, {$set:{isAvailable:true}}, cb);
+    require('./user').findById(bidder, function(err, bidder){
+      require('./item').findById(sItem, function(err, sItem){
+        yayEmail(bidder.email, sItem, function(){
+          yayText(bidder.phone, sItem, function(){
+        });
+      });
+    });
+  });
+}
 
 function iterator(dib, cb){
   require('./item').findById(dib.sItem, function(err, sItem){

@@ -2,6 +2,7 @@
 
 var bcrypt  = require('bcrypt'),
     Mongo   = require('mongodb'),
+    async   = require('async'),
     _       = require('lodash'),
     twilio  = require('twilio'),
     Mailgun = require('mailgun-js'),
@@ -68,46 +69,28 @@ User.prototype.save = function(o, cb){
 
 // MESSAGES
 
-User.prototype.unread = function(cb){
+User.prototype.unreadd = function(cb){
   Message.unread(this._id, cb);
 };
 
-User.prototype.messages = function(cb){
-  Message.messages(this._id, cb);
+User.prototype.messages = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  require('./message').collection.find({receiverId:_id}).sort({date:-1}).toArray(function(err, msgs){
+    async.map(msgs, iterator, cb);
+  });
 };
 
 User.prototype.send = function(receiver, obj, cb){
-/*  switch(obj.mtype){
-    case 'text':
-      sendText(receiver.phone, obj.message, cb);
-      break;
-    case 'email':
-      sendEmail(this.email, receiver.email, 'Message from Dibster', obj.message, cb);
-      break;
-    case 'internal':*/
   Message.send(this._id, receiver._id, obj.message, cb);
- // }
 };
 
 module.exports = User;
 
 // PRIVATE HELPER FUNCTIONS //
-/*
-function sendText(to, body, cb){
-  if(!to){return cb();}
-
-  var accountSid = process.env.TWSID,
-      authToken  = process.env.TWTOK,
-      from       = process.env.FROM,
-      client     = twilio(accountSid, authToken);
-
-  client.messages.create({to:to, from:from, body:body}, cb);
+function iterator(msg, cb){
+  var _id = Mongo.ObjectID(msg.senderId);
+  User.findById(_id, function(err, sender){
+    msg.sender = sender;
+    cb(null, msg);
+  });
 }
-
-function sendEmail(from, to, subject, message, cb){
-  var mailgun = new Mailgun({apiKey:process.env.MGKEY, domain:process.env.MGDOM}),
-      data   = {from:from, to:to, subject:subject, text:message};
-
-  mailgun.messages().send(data, cb);
-}
-*/

@@ -5,5 +5,11 @@ block content
     #banner.page-header
       .row
         .col-xs-12
-          h1#header Create a New Dibster Account
+          h1#header Read your message!!
     .row
+      .col-xs-2
+      .col-xs-8
+        ul
+          li= 'From: ' + message.sender.username
+          li= 'Date: ' + message.date
+          li= 'Body: ' + message.message

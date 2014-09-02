@@ -85,15 +85,15 @@ exports.send = function(req, res){
 
 //Display all messages to given user
 exports.displayMessages = function(req, res){
-  res.locals.user.messages(function(err, msgs){
-    res.render('users/inbox', {msgs:msgs});
+  res.locals.user.messages(res.locals.user._id, function(err, messages){
+    res.render('users/inbox', {messages:messages, moment:moment});
   });
 };
 
 //Display a single message
 exports.readMessage = function(req, res){
-  Message.read(req.params.msgId, function(err, msg){
-    res.render('users/message', {msg:msg, moment:moment});
+  Message.read(req.params.msgId, function(err, message){
+    res.render('users/message', {message:message, moment:moment});
   });
 };
 
