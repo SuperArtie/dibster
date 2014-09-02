@@ -48,7 +48,8 @@ block content
                   td
                     form(action='/items/#{item._id}', method='POST', onsubmit="return confirm('Are you sure you want to delete item?')")
                       input(type='hidden', name='_method', value='delete')
-                      button.alert.del-but x
+                      button.alert.btn-danger.btn-mini(type='submit')
+                        span.glyphicon.glyphicon-trash
     .row
       h3 Dibs
       .col-xs-12.user-item-list
@@ -93,5 +94,10 @@ block content
                   td= moment(bid.date).format('MM/DD/YYYY')
                   td
                     form(action='/accept/#{bid._id}', method='POST')
-                      button.btn.btn-success(type='submit') Accept
+                      button.btn.btn-default.btn-mini(type='submit')
+                        span.glyphicon.glyphicon-thumbs-up
+                  td
+                    form(action='/deny/#{bid._id}', method='POST')
+                      button.btn.btn-default.btn-mini(type='submit')
+                        span.glyphicon.glyphicon-thumbs-down
 block scripts

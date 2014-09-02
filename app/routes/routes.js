@@ -46,13 +46,14 @@ module.exports = function(app, express){
   app.get('/messages', users.displayMessages);
 
   // Items
+  app.get('/items/new', items.new);
   app.get('/items/:itemId', items.show);
   app.delete('/items/:itemId', items.delete);
-  app.get('/items/new', items.new);
   app.post('/items', items.save);
   app.get('/browse', items.browse);
   app.post('/items/bid', items.bid);
   app.post('/accept/:bidId', items.accept);
+  app.post('/deny/:bidId', items.deny);
   console.log('Express: Routes Loaded');
 };
 

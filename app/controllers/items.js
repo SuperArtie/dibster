@@ -55,3 +55,9 @@ exports.accept = function(req, res){
     });
   });
 };
+
+exports.deny = function(req, res){
+  Bid.destroy(req.params.bidId, function(){
+    res.redirect('/dashboard');
+  });
+};

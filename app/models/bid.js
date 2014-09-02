@@ -47,6 +47,11 @@ Bid.findById = function(id, cb){
   Bid.collection.findOne({_id:_id}, cb);
 };
 
+Bid.destroy = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  Bid.collection.findAndRemove({_id:_id}, cb);
+};
+
 Bid.getBids = function(itemForBidId, cb){
   Bid.collection.find({itemForBidId:itemForBidId, isOpen:true}).toArray(function(err, bids){
     if(bids.length){
@@ -58,7 +63,7 @@ Bid.getBids = function(itemForBidId, cb){
 };
 
 Bid.accept = function(bid, cb){
-  require('./item').collection.findAndModify({_id:bid.bItem}, {}, {$set: {ownerId:bid.seller}}, function(err1, sItem){
+  require('./item').collection.findAndModify({_id:bid.bItem}, {}, {$set: {ownerId:bid.seller, isAvailable:true}}, function(err1, sItem){
     require('./item').collection.findAndModify({_id:bid.sItem}, {}, {$set: {ownerId:bid.bidder}}, function(err2, bItem){
       Bid.collection.findAndRemove({_id:bid._id}, cb);
     });
