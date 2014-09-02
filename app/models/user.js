@@ -83,7 +83,7 @@ User.prototype.send = function(receiver, obj, cb){
       sendEmail(this.email, receiver.email, 'Message from Dibster', obj.message, cb);
       break;
     case 'internal':*/
-      Message.send(this._id, receiver._id, obj.message, cb);
+  Message.send(this._id, receiver._id, obj.message, cb);
  // }
 };
 

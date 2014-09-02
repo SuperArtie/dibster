@@ -40,7 +40,7 @@ describe('users', function(){
     });
   });
 
-    describe('get /profile/edit', function(){
+  describe('get /profile/edit', function(){
     it('should show the edit profile page', function(done){
       request(app)
       .get('/profile/edit')

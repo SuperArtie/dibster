@@ -8,6 +8,7 @@ block content
         thead
           th Picture
           th Name
+          th Owner
           th Location
           th Date Posted
           th Category
@@ -17,7 +18,7 @@ block content
             tr(data-loc=item.loc, data-lat=item.lat, data-lng=item.lng)
               td: a(href='/items/#{item._id}'): img(class='pic-show',src= item.photo)
               td: a(href='/items/#{item._id}')= item.name
-              td= item.name
+              td: a(href='/users/#{item.ownerName}')= item.ownerName
               td= item.loc
               td= moment(item.datePosted).format('MM/DD/YYYY')
               td= item.category

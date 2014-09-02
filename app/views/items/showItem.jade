@@ -32,13 +32,13 @@ block content
         if user._id.toString() !== item.ownerId.toString()
           .row
             .col-xs-12
-              form(role='form', method='post', action='/bid')
+              form(role='form', method='post', action='/items/bid')
                 h2.legend Want this item?
                           | Offer an item to trade:
                 .form-group
                   input.form-control#sItem(type='hidden' name='sItem' value=item._id)
-                  input.form-control#seller(type='hidden' name='seller' value=item.ownerId.toString())
-                  input.form-control#bidder(type='hidden' name='bidder' value=user._id.toString())
+                  input.form-control#seller(type='hidden' name='seller' value=item.ownerId)
+                  input.form-control#bidder(type='hidden' name='bidder' value=user._id)
                   label(for='bItem') Your items for bid
                     select.form-control#bItem(name='bItem')
                       each item in items

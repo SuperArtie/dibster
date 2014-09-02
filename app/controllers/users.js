@@ -2,6 +2,7 @@
 
 var User = require('../models/user'),
     Item = require('../models/item'),
+    Bid  = require('../models/bid'),
     Message = require('../models/message'),
     moment = require('moment');
 
@@ -50,7 +51,11 @@ exports.edit = function(req, res){
 
 exports.dashboard = function(req, res){
   Item.findAllByOwner(res.locals.user._id, function(err, items){
-    res.render('users/dashboard', {items:items, moment:moment});
+    Bid.findDibs(res.locals.user._id, function(err, dibs){
+      Bid.findBids(res.locals.user._id, function(err, bids){
+        res.render('users/dashboard', {items:items, dibs:dibs, bids:bids, moment:moment});
+      });
+    });
   });
 };
 
@@ -63,7 +68,9 @@ exports.editProfile = function(req, res){
 
 exports.client = function(req, res){
   User.findOne({username:req.params.username}, function(err, client){
-    res.render('users/client', {client: client});
+    Item.findAllByOwner(client._id, function(err, items){
+      res.render('users/client', {client: client, items:items, moment:moment});
+    });
   });
 };
 

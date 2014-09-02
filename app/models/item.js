@@ -89,9 +89,10 @@ module.exports = Item;
 
 function iterator(item, cb){
   require('./user').findById(item.ownerId, function(err, owner){
-    item.loc = owner.loc;
-    item.lat = owner.lat;
-    item.lng = owner.lng;
+    item.loc       = owner.loc;
+    item.lat       = owner.lat;
+    item.lng       = owner.lng;
+    item.ownerName = owner.username;
     cb(null, item);
   });
 }
@@ -102,26 +103,3 @@ function getNumBids(item, cb){
     cb(null, item);
   });
 }
-/*
-// Harder feature (upload photos)
-function moveFiles(photos, count, relDir){
-  var baseDir = __dirname + '/../static',
-      absDir  = baseDir + relDir;
-
-  if(!fs.existsSync(absDir)){fs.mkdirSync(absDir);}
-
-  var tmpPhotos = photos.map(function(photo, index){
-    if(!photo.size){return;}
-
-    var ext      = path.extname(photo.path),
-        name     = count + index + ext,
-        absPath  = absDir + '/' + name,
-        relPath  = relDir + '/' + name;
-
-    fs.renameSync(photo.path, absPath);
-    return relPath;
-  });
-
-  return _.compact(tmpPhotos);
-}
-*/

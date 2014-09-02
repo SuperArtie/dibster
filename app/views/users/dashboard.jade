@@ -1,4 +1,3 @@
-// Private profile view
 extends ../shared/template
 block content
   .container
@@ -10,10 +9,7 @@ block content
       .col-xs-5
         .panel.panel-primary
           .panel-heading
-            //- if user._id === client._id
             h3.panel-title: a(href='/profile/edit') Edit Profile
-            //- else
-              //- h3.panel-title Contact Infomation
           .panel-body
             ul.list-group
               li.list-group-item
@@ -44,8 +40,6 @@ block content
               th Category
               th Description
               th Tags
-              th isAvailable?
-              th Remove
             tbody
               each item in items
                 tr
@@ -55,10 +49,50 @@ block content
                   td= item.category
                   td= item.description
                   td= item.tags.join(', ')
-                  td= item.isAvailable
-                  //- if user._id === owner._id
                   td
                     form(action='/items/#{item._id}', method='POST', onsubmit="return confirm('Are you sure you want to delete item?')")
                       input(type='hidden', name='_method', value='delete')
                       button.alert.del-but x
+    .row
+      h3 Dibs
+      .col-xs-12.user-item-list
+        span.h3.cap #{user.username}'s
+          | Dibs
+        .table-responsive
+          table.table.table-hover.user-items
+            thead
+              th Picture
+              th Name
+              th Seller
+              th Your Item
+              th Date
+            tbody
+              each dib in dibs
+                tr
+                  td: a(href='#{dib.photo}'): img(class='pic-show', src= dib.photo)
+                  td: a(href='/items/#{dib.sItem}')= dib.name
+                  td: a(href='/users/#{dib.sellerName}')= dib.sellerName
+                  td: a(href='/items/#{dib.bItem}')= dib.bName
+                  td= moment(dib.date).format('MM/DD/YYYY')
+    .row
+      h3 Bids
+      .col-xs-12.user-item-list
+        span.h3.cap #{user.username}'s
+          | Bids
+        .table-responsive
+          table.table.table-hover.user-items
+            thead
+              th Picture
+              th Name
+              th Bidder
+              th Their Item
+              th Date
+            tbody
+              each bid in bids
+                tr
+                  td: a(href='{bid.photo}'): img(class='pic-show', src= bid.photo)
+                  td: a(href='/items/#{bid.sItem}')= bid.name
+                  td: a(href='/users/#{bid.bidderName}')= bid.bidderName
+                  td: a(href='/items/#{bid.bItem}')= bid.bName
+                  td= moment(bid.date).format('MM/DD/YYYY')
 block scripts
