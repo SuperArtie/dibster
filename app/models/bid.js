@@ -27,23 +27,17 @@ Bid.create = function(o, cb){
   });
 };
 
-Bid.countBids = function(itemId, cb){
-  Bid.collection.count({itemForBidId:itemId, isOpen:true}, cb);
-};
 // find the "dibs" for the dashboard
 Bid.findDibs = function(id, cb){
-  //console.log(id);
   var _id = Mongo.ObjectID(id);
-  //console.log(_id);
   Bid.collection.find({bidder:_id}).toArray(function(err, dibs){
     async.map(dibs, iterator, cb);
   });
 };
+
 // find the "bids" for the dashboard
 Bid.findBids = function(id, cb){
-  //console.log(id);
   var _id = Mongo.ObjectID(id);
-  //console.log(_id);
   Bid.collection.find({seller:_id}).toArray(function(err, bids){
     async.map(bids, iterator2, cb);
   });
@@ -56,7 +50,7 @@ Bid.findById = function(id, cb){
 
 Bid.destroy = function(bid, cb){
   var _id = Mongo.ObjectID(bid._id);
-    Bid.collection.findAndRemove({_id:_id}, cb);
+  Bid.collection.findAndRemove({_id:_id}, cb);
 };
 
 Bid.accept = function(bid, cb){
@@ -71,14 +65,14 @@ Bid.accept = function(bid, cb){
 
 module.exports = Bid;
 
-// PRIVATE HELPER FUNCTION //
+// PRIVATE HELPER FUNCTIONS //
 
 function acceptHelper(bidder, sItem, bItem, cb){
   require('./item').collection.update({_id:bItem}, {$set:{isAvailable:true}}, cb);
-    require('./user').findById(bidder, function(err, bidder){
-      require('./item').findById(sItem, function(err, sItem){
-        yayEmail(bidder.email, sItem, function(){
-          yayText(bidder.phone, sItem, function(){
+  require('./user').findById(bidder, function(err, bidder){
+    require('./item').findById(sItem, function(err, sItem){
+      yayEmail(bidder.email, sItem, function(){
+        yayText(bidder.phone, sItem, function(){
         });
       });
     });
@@ -116,9 +110,9 @@ function iterator2(bid, cb){
 function newEmail(to, sItem, cb){
   var apikey = process.env.MGAPIKEY,
       domain = process.env.MGDOMAIN,
-     mailgun = new Mailgun({apiKey: apikey, domain: domain}),
-        body = 'Hey hey hey there\'s been some dibs called on your ' + sItem.name + '! come quick!!!!',
-        data = {from: 'rob_schneider@dibstr.com', to: to, subject: 'DIBS!!', text: body};
+      mailgun = new Mailgun({apiKey: apikey, domain: domain}),
+      body = 'Hey hey hey there\'s been some dibs called on your ' + sItem.name + '! come quick!!!!',
+      data = {from: 'rob_schneider@dibstr.com', to: to, subject: 'DIBS!!', text: body};
 
   mailgun.messages().send(data, cb);
 
@@ -127,9 +121,9 @@ function newEmail(to, sItem, cb){
 function yayEmail(to, sItem, cb){
   var apikey = process.env.MGAPIKEY,
       domain = process.env.MGDOMAIN,
-     mailgun = new Mailgun({apiKey: apikey, domain: domain}),
-        body = 'Remember those dibs you called on ' + sItem.name  + '??? Well it worked, buddy!!! This message was brought to you by your fellow brothers of the knife here at Dibstr!',
-        data = {from: 'rob_schneider@dibstr.com', to: to, subject: 'You won!! ' + sItem.name + ' is now yours!!', text: body};
+      mailgun = new Mailgun({apiKey: apikey, domain: domain}),
+      body = 'Remember those dibs you called on ' + sItem.name  + '??? Well it worked, buddy!!! This message was brought to you by your fellow brothers of the knife here at Dibstr!',
+      data = {from: 'rob_schneider@dibstr.com', to: to, subject: 'You won!! ' + sItem.name + ' is now yours!!', text: body};
 
   mailgun.messages().send(data, cb);
 

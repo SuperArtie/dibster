@@ -1,7 +1,6 @@
 'use strict';
 
-var async = require('async'),
-    Mongo = require('mongodb');
+var Mongo = require('mongodb');
 
 function Message(senderId, receiverId, message){
   this.senderId   = senderId;

@@ -6,8 +6,9 @@ block content
         .col-xs-12
           h1#header Edit Profile
     .row
-      .col-xs-6
-        form(role='form', method='post', action='/profile')
+      .col-xs-4
+      .col-xs-4
+        form(role='form', method='post', action='/dashboard')
           input(type='hidden', name='_method', value='put')
           .form-group
             label(for='name') Username
@@ -27,7 +28,7 @@ block content
             input.form-control#lat(type='hidden', name='lat')
             input.form-control#lng(type='hidden', name='lng')
           button.btn.btn-success(type='submit') Edit Profile
-      .col-xs-6
+      .col-xs-4
 
 block scripts
   script(src='/js/user/edit.js')

@@ -4,8 +4,6 @@ var bcrypt  = require('bcrypt'),
     Mongo   = require('mongodb'),
     async   = require('async'),
     _       = require('lodash'),
-    twilio  = require('twilio'),
-    Mailgun = require('mailgun-js'),
     Message = require('./message');
 
 function User(){
@@ -66,10 +64,9 @@ User.prototype.save = function(o, cb){
 };
 
 
-
 // MESSAGES
 
-User.prototype.unreadd = function(cb){
+User.prototype.unread = function(cb){
   Message.unread(this._id, cb);
 };
 

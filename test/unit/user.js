@@ -50,38 +50,12 @@ describe('User', function(){
   describe('#save', function(){
     it('should add new things to user object and save', function(done){
       var u = new User(),
-        o = {username : 'bob', phone : 6152436771, photo : 'http://38.media.tumblr.com/8ef78f4377b12e0a72959be74c6e039d/tumblr_mrk0y8mMZ51qdgj2no1_500.png', loc : {name:'Nashville, TN USA ', lat:12, lng:7}};
+        o = {username : 'bob', phone : '615-243-6771', photo : 'http://38.media.tumblr.com/8ef78f4377b12e0a72959be74c6e039d/tumblr_mrk0y8mMZ51qdgj2no1_500.png', loc : {name:'Nashville, TN USA ', lat:12, lng:7}};
       u.save(o, function(err, user){
-        expect(u.phone).to.equal(6152436771);
-        console.log(u);
+        expect(u.phone).to.equal('615-243-6771');
         done();
       });
     });
   });
-/*
-  describe('#send', function(){
-    it('should send a text message to a user', function(done){
-      User.findById('000000000000000000000001', function(err, sender){
-        User.findById('000000000000000000000002', function(err, receiver){
-          sender.send(receiver, {mtype:'text', message:'yo'}, function(err, response){
-            expect(response.sid).to.be.ok;
-            done();
-          });
-        });
-      });
-    });
-
-    it('should send an email message to a user', function(done){
-      User.findById('000000000000000000000001', function(err, sender){
-        User.findById('000000000000000000000002', function(err, receiver){
-          sender.send(receiver, {mtype:'email', message:'yo'}, function(err, response){
-            expect(response.id).to.be.ok;
-            done();
-          });
-        });
-      });
-    });
-  });
-  */
 // Last bracket
 });

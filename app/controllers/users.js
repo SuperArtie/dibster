@@ -74,6 +74,7 @@ exports.client = function(req, res){
   });
 };
 
+
 //Send Message
 exports.send = function(req, res){
   User.findById(req.params.userId, function(err, receiver){
@@ -96,4 +97,3 @@ exports.readMessage = function(req, res){
     res.render('users/message', {message:message, moment:moment});
   });
 };
-

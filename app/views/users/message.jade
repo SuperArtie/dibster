@@ -5,11 +5,17 @@ block content
     #banner.page-header
       .row
         .col-xs-12
-          h1#header Read your message!!
+          h3#header Message From:&nbsp #{message.sender.username}
     .row
-      .col-xs-2
+      .col-xs-4
+        table.table#message
+          tr
+            td Message From:&nbsp #{message.sender.username}
+          tr
+            td Date:&nbsp #{moment(message.date).format('MM/DD/YYYY')}
+            td Time:&nbsp #{moment(message.date).fromNow()}
+          tr
+            td Body:
+          tr
+            td #{message.message}
       .col-xs-8
-        ul
-          li= 'From: ' + message.sender.username
-          li= 'Date: ' + message.date
-          li= 'Body: ' + message.message

@@ -14,10 +14,9 @@
       ul.nav.navbar-nav.navbar-right.nav-pills
         if user
           li: a(href='/messages') Inbox
-              span.badge #{(unread > 0) ? unread : null}
           li: a(href='/items/new') Add Item
           li.divider
-          li: a(href='/dashboard')= user.email
+          li: a(href='/dashboard') #{user.username}'s Dashboard
           li
             form.navbar-form(method='post', action='/logout')
               .form-group

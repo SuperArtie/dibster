@@ -35,7 +35,6 @@ describe('Item', function(){
       expect(i.photo).to.equal('url');
       expect(i.datePosted).to.be.instanceof(Date);
       expect(i.ownerId).to.be.instanceof(Mongo.ObjectID);
-      expect(i.isOffered).to.be.false;
       expect(i.isAvailable).to.be.true;
     });
   });
@@ -69,13 +68,6 @@ describe('Item', function(){
       var id = Mongo.ObjectID('000000000000000000000001');
       Item.findAllByOwner(id, function(err, items){
         expect(items).to.have.length(3);
-        expect(items[1].numBids).to.equal(1);
-        done();
-      });
-    });
-    it('should return the number of bids placed on all items owned by the user in the database', function(done){
-      var id = Mongo.ObjectID('000000000000000000000001');
-      Item.findAllByOwner(id, function(err, items){
         expect(items[1].numBids).to.equal(1);
         done();
       });

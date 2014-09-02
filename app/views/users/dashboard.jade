@@ -51,52 +51,54 @@ block content
                       button.alert.btn-danger.btn-mini(type='submit')
                         span.glyphicon.glyphicon-trash
     .row
-      h3 Dibs
-      .col-xs-12.user-item-list
-        span.h3.cap #{user.username}'s
-          | Dibs
-        .table-responsive
-          table.table.table-hover.user-items
-            thead
-              th Picture
-              th Name
-              th Seller
-              th Your Item
-              th Date
-            tbody
-              each dib in dibs
-                tr
-                  td: a(href='#{dib.photo}'): img(class='pic-show', src= dib.photo)
-                  td: a(href='/items/#{dib.sItem}')= dib.name
-                  td: a(href='/users/#{dib.sellerName}')= dib.sellerName
-                  td: a(href='/items/#{dib.bItem}')= dib.bName
-                  td= moment(dib.date).format('MM/DD/YYYY')
+      .panel.panel-warning
+        .panel-heading
+          h3.panel-title Dibs
+        .panel-body
+          .table-responsive
+            table.table.table-hover.user-items
+              thead
+                th Picture
+                th Name
+                th Seller
+                th Your Item
+                th Date
+              tbody
+                each dib in dibs
+                  tr
+                    td: a(href='#{dib.photo}'): img(class='pic-show', src= dib.photo)
+                    td: a(href='/items/#{dib.sItem}')= dib.name
+                    td: a(href='/users/#{dib.sellerName}')= dib.sellerName
+                    td: a(href='/items/#{dib.bItem}')= dib.bName
+                    td= moment(dib.date).format('MM/DD/YYYY')
     .row
-      h3 Bids
-      .col-xs-12.user-item-list
-        span.h3.cap Bids
-        .table-responsive
-          table.table.table-hover.user-items
-            thead
-              th Picture
-              th Name
-              th Bidder
-              th Their Item
-              th Date
-            tbody
-              each bid in bids
-                tr
-                  td: a(href='{bid.photo}'): img(class='pic-show', src= bid.photo)
-                  td: a(href='/items/#{bid.sItem}')= bid.name
-                  td: a(href='/users/#{bid.bidderName}')= bid.bidderName
-                  td: a(href='/items/#{bid.bItem}')= bid.bName
-                  td= moment(bid.date).format('MM/DD/YYYY')
-                  td
-                    form(action='/accept/#{bid._id}', method='POST')
-                      button.btn.btn-default.btn-mini(type='submit')
-                        span.glyphicon.glyphicon-thumbs-up
-                  td
-                    form(action='/deny/#{bid._id}', method='POST')
-                      button.btn.btn-default.btn-mini(type='submit')
-                        span.glyphicon.glyphicon-thumbs-down
+      .panel.panel-success
+        .panel-heading
+          h3.panel-title Bids
+        .panel-body
+          .table-responsive
+            table.table.table-hover.user-items
+              thead
+                th Picture
+                th Name
+                th Bidder
+                th Their Item
+                th Date
+                th Accept Bid?
+              tbody
+                each bid in bids
+                  tr
+                    td: a(href='{bid.photo}'): img(class='pic-show', src= bid.photo)
+                    td: a(href='/items/#{bid.sItem}')= bid.name
+                    td: a(href='/users/#{bid.bidderName}')= bid.bidderName
+                    td: a(href='/items/#{bid.bItem}')= bid.bName
+                    td= moment(bid.date).format('MM/DD/YYYY')
+                    td
+                      form(action='/accept/#{bid._id}', method='POST')
+                        button.btn.btn-default.btn-mini(type='submit')
+                          span.glyphicon.glyphicon-thumbs-up
+                    td
+                      form(action='/deny/#{bid._id}', method='POST')
+                        button.btn.btn-default.btn-mini(type='submit')
+                          span.glyphicon.glyphicon-thumbs-down
 block scripts

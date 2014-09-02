@@ -1,27 +1,57 @@
 extends ../shared/template
+extends ../shared/template
 block content
-  h2 Browse da itumz
-  #map
-  .row
-    .col-xs-12
-      table
-        thead
-          th Picture
-          th Name
-          th Owner
-          th Location
-          th Date Posted
-          th Category
-          th Tags
-        tbody
-          each item in items
-            tr(data-loc=item.loc, data-lat=item.lat, data-lng=item.lng)
-              td: a(href='/items/#{item._id}'): img(class='pic-show',src= item.photo)
-              td: a(href='/items/#{item._id}')= item.name
-              td: a(href='/users/#{item.ownerName}')= item.ownerName
-              td= item.loc
-              td= moment(item.datePosted).format('MM/DD/YYYY')
-              td= item.category
-              td= item.tags
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h1#header Browse Items
+          h5 See an item you like?  Hurry and call DIBS!
+    .row
+      .col-xs-4
+        form.navbar-form.navbar-left(role='search')
+          .form-group
+            input.form-control(type='text', placeholder='Search')
+            button.btn.btn-default.btn-mini(type='submit')
+              span.glyphicon.glyphicon-search
+            .col-xs-2
+              br
+          div.dropdown
+            button#dropdownMenu1.btn.btn-default.btn-md.dropdown-toggle(type='button', data-toggle='dropdown')
+              | Categories
+              span.caret
+            ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu1')
+              li(role='presentation')
+                a(role='menuitem', tabindex='-1', href='#') Category 1
+              li(role='presentation')
+                a(role='menuitem', tabindex='-1', href='#') Category 2
+      .col-xs-1
+      .col-xs-5
+        #map
+      .col-xs-2
+    br
+    .row
+      .col-xs-1
+      .col-xs-10
+        table.table.table-striped.table-hover
+          thead
+            th Photo
+            th Item
+            th Owner
+            th Location
+            th Date Posted
+            th Category
+            th Tags
+          tbody
+            each item in items
+              tr(data-loc=item.loc, data-lat=item.lat, data-lng=item.lng)
+                td: a(href='/items/#{item._id}'): img(class='pic-show',src= item.photo)
+                td: a(href='/items/#{item._id}')= item.name
+                td: a(href='/users/#{item.ownerName}')= item.ownerName
+                td= item.loc
+                td= moment(item.datePosted).format('MM/DD/YYYY')
+                td= item.category
+                td= item.tags
+      .col-xs-1
 block scripts
   script(src='/js/user/browse.js')

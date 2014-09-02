@@ -55,24 +55,24 @@ describe('users', function(){
     });
   });
 
-  describe('put /profile', function(){
+  describe('put /dashboard', function(){
     it('should edit the profile', function(done){
       request(app)
-      .post('/profile')
+      .post('/dashboard')
       .send('_method=put&email=melanie%40frymanet.com&phone=123456789&photo=photourl')
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('/profile');
+        expect(res.headers.location).to.equal('/dashboard');
         done();
       });
     });
   });
 
-  describe('get /profile', function(){
-    it('should show the profile', function(done){
+  describe('get /dashboard', function(){
+    it('should show the dashboard', function(done){
       request(app)
-      .get('/profile')
+      .get('/dashboard')
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(200);

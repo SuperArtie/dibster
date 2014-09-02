@@ -36,7 +36,7 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/profile/edit', users.edit);
-  app.put('/profile', users.editProfile);
+  app.put('/dashboard', users.editProfile);
   app.get('/dashboard', users.dashboard);
   app.get('/users/:username', users.client);
 

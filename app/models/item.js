@@ -2,7 +2,6 @@
 
 var Mongo  = require('mongodb'),
     _      = require('lodash'),
-    Bid    = require('./bid'),
     async  = require('async');
 
 function Item(userId, o){
@@ -14,10 +13,7 @@ function Item(userId, o){
   this.tags = _.compact(this.tags);
   this.datePosted = new Date();
   this.ownerId = Mongo.ObjectID(userId);
-
-  // private data properties
-  this.isAvailable = true;  // item is available in inventory
-  this.isOffered = false; // item has been offered to another user to trade & is currently NOT available
+  this.isAvailable = true;
 }
 
 Object.defineProperty(Item, 'collection', {
@@ -25,11 +21,7 @@ Object.defineProperty(Item, 'collection', {
 });
 
 Item.create = function(id, o, cb){
-  console.log('------ MODEL OBJECT ------');
-  console.log(o);
   var item = new Item(id, o);
-  console.log('------ MODEL ITEM ------');
-  console.log(item);
   Item.collection.save(item, cb);
 };
 
@@ -46,9 +38,9 @@ Item.findById = function(id, cb){
 
 Item.findAllByOwner = function(userId, cb){
   //var _id = Mongo.ObjectID(userId);
-    console.log('~~~~~~~userId' + userId);
+    console.log('~~~~~~~userId: ' + userId);
   Item.collection.find({ownerId:userId}).toArray(function(err, items){
-    console.log('~~~~~~~items' + items);
+    console.log('~~~~~~~items: ' + items);
     async.map(items, iterator, cb);
   });
 };
@@ -77,4 +69,3 @@ function iterator(item, cb){
     cb(null, item);
   });
 }
-

@@ -4,23 +4,22 @@ block content
     #banner.page-header
       .row
         .col-xs-12
-          h2 #{user.username}'s Inbox
-    //.row
-      //.col-xs-4
-        //#unread.alert.alert-dismissable.alert-danger
-          //button.close(type='button', data-dismiss='alert') ×
-          //h5 #{ (user.unread) ? 'You have ' + user.unread + ' unread message(s)' : 'You have no unread messages.'}
+          h2 Inbox
     .row
-      .col-xs-6
-        table.table
-          tr
-            th From
-            th: a(href="/messages?sort=#{(sort === 1) ? 1 : sort * -1 }") Date
-            th Time
-            th Message
-              each message in messages
-                tr(style='font-weight: #{ (message.isRead) ? "normal" : "bold"};')
-                  td= message.sender.username
-                  td= moment(message.date).format('MM/DD/YYYY')
-                  td= moment(message.date).fromNow()
-                  td: a(href='/message/#{message._id}')= message.message.slice(0, 10) + '....'
+      .col-xs-1
+      .col-xs-9
+        table.table.table-striped.table-hover
+          thead
+            tr
+              th From
+              th: a(href="/messages?sort=#{(sort === 1) ? 1 : sort * -1 }") Date
+              th Time
+              th Message
+          tbody
+            each message in messages
+              tr(style='font-weight: #{ (message.isRead) ? "normal" : "bold"};')
+                td= message.sender.username
+                td= moment(message.date).format('MM/DD/YYYY')
+                td= moment(message.date).fromNow()
+                td: a(href='/message/#{message._id}')= message.message.slice(0, 10) + '....'
+      .col-xs-2

@@ -7,7 +7,6 @@ var expect    = require('chai').expect,
     Bid       = require('../../app/models/bid'),
     dbConnect = require('../../app/lib/mongodb'),
     cp        = require('child_process'),
-   // Mongo     = require('mongodb'),
     db        = 'dibster-test';
 
 describe('Bid', function(){
