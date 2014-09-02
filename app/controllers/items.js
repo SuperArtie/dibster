@@ -10,7 +10,7 @@ exports.new = function(req, res){
 
 exports.save = function(req, res){
   Item.create(res.locals.user._id, req.body, function(){
-    res.redirect('/items');
+    res.redirect('/dashboard');
   });
 };
 
@@ -57,7 +57,9 @@ exports.accept = function(req, res){
 };
 
 exports.deny = function(req, res){
-  Bid.destroy(req.params.bidId, function(){
-    res.redirect('/dashboard');
+  Bid.findById(req.params.bidId, function(err, bid){
+    Bid.destroy(bid, function(){
+      res.redirect('/dashboard');
+    });
   });
 };

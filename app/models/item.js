@@ -33,6 +33,10 @@ Item.create = function(id, o, cb){
   Item.collection.save(item, cb);
 };
 
+Item.findOne = function(filter, cb){
+  Item.collection.findOne(filter, cb);
+};
+
 Item.findById = function(id, cb){
   var itemId = Mongo.ObjectID(id);
   Item.collection.findOne({_id:itemId}, function(err, item){
@@ -41,8 +45,11 @@ Item.findById = function(id, cb){
 };
 
 Item.findAllByOwner = function(userId, cb){
+  //var _id = Mongo.ObjectID(userId);
+    console.log('~~~~~~~userId' + userId);
   Item.collection.find({ownerId:userId}).toArray(function(err, items){
-    async.map(items, getNumBids, cb);
+    console.log('~~~~~~~items' + items);
+    async.map(items, iterator, cb);
   });
 };
 
@@ -71,9 +78,3 @@ function iterator(item, cb){
   });
 }
 
-function getNumBids(item, cb){
-  Bid.countBids(item._id, function(err, count){
-    item.numBids = count;
-    cb(null, item);
-  });
-}

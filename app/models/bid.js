@@ -1,7 +1,8 @@
 'use strict';
 
-var Mongo  = require('mongodb'),
-    async  = require('async');
+var Mongo   = require('mongodb'),
+    async   = require('async'),
+    Mailgun = require('mailgun-js');
 
 function Bid(o){
   this.sItem  = Mongo.ObjectID(o.sItem);
@@ -17,7 +18,9 @@ Object.defineProperty(Bid, 'collection', {
 
 Bid.create = function(o, cb){
   var b = new Bid(o);
-  Bid.collection.save(b, cb);
+  Bid.collection.save(b, function(){
+    newEmail(b.seller.email, b.sItem, cb);
+  });
 };
 
 Bid.countBids = function(itemId, cb){
@@ -25,18 +28,18 @@ Bid.countBids = function(itemId, cb){
 };
 // find the "dibs" for the dashboard
 Bid.findDibs = function(id, cb){
-  console.log(id);
+  //console.log(id);
   var _id = Mongo.ObjectID(id);
-  console.log(_id);
+  //console.log(_id);
   Bid.collection.find({bidder:_id}).toArray(function(err, dibs){
     async.map(dibs, iterator, cb);
   });
 };
 // find the "bids" for the dashboard
 Bid.findBids = function(id, cb){
-  console.log(id);
+  //console.log(id);
   var _id = Mongo.ObjectID(id);
-  console.log(_id);
+  //console.log(_id);
   Bid.collection.find({seller:_id}).toArray(function(err, bids){
     async.map(bids, iterator2, cb);
   });
@@ -47,29 +50,34 @@ Bid.findById = function(id, cb){
   Bid.collection.findOne({_id:_id}, cb);
 };
 
-Bid.destroy = function(id, cb){
-  var _id = Mongo.ObjectID(id);
-  Bid.collection.findAndRemove({_id:_id}, cb);
-};
-
-Bid.getBids = function(itemForBidId, cb){
-  Bid.collection.find({itemForBidId:itemForBidId, isOpen:true}).toArray(function(err, bids){
-    if(bids.length){
-      async.map(bids, attachItem, cb);
-    }else{
-      cb(err, bids);
-    }
+Bid.destroy = function(bid, cb){
+  var _id = Mongo.ObjectID(bid._id);
+  require('./item').collection.update({_id:bid.sItem}, {isAvailable:true}, function(){
+    Bid.collection.findAndRemove({_id:_id}, cb);
   });
 };
 
 Bid.accept = function(bid, cb){
   require('./item').collection.findAndModify({_id:bid.bItem}, {}, {$set: {ownerId:bid.seller, isAvailable:true}}, function(err1, sItem){
-    require('./item').collection.findAndModify({_id:bid.sItem}, {}, {$set: {ownerId:bid.bidder}}, function(err2, bItem){
-      Bid.collection.findAndRemove({_id:bid._id}, cb);
+    require('./item').collection.findAndModify({_id:bid.sItem}, {}, {$set: {ownerId:bid.bidder, isAvailable:true}}, function(err2, bItem){
+      require('./user').findById(bid.bidder, function(err, bidder){
+        require('./item').findById(bid.sItem, function(err, sItem){
+          require('./item').collection.update({_id:bid.sItem}, {isAvailable:true}, function(){
+            yayEmail(bidder.email, sItem, function(){
+              yayText(bidder.phone, sItem, function(){
+                Bid.collection.remove({sItem:bid.sItem}, cb);
+              });
+            });
+          });
+        });
+      });
     });
   });
 };
+
 module.exports = Bid;
+
+// PRIVATE HELPER FUNCTION //
 
 function iterator(dib, cb){
   require('./item').findById(dib.sItem, function(err, sItem){
@@ -98,10 +106,37 @@ function iterator2(bid, cb){
     });
   });
 }
-// PRIVATE HELPER FUNCTION //
-function attachItem(bid, cb){
-  require('./item').findById(bid.itemOfferedId.toString(), function(err, item){
-    bid.item = item;
-    cb(null, bid);
-  });
+
+function newEmail(to, sItem, cb){
+  var apikey = process.env.MGAPIKEY,
+      domain = process.env.MGDOMAIN,
+     mailgun = new Mailgun({apiKey: apikey, domain: domain}),
+        body = 'Hey hey hey there\'s been some dibs called on your ' + sItem.name + '! come quick!!!!',
+        data = {from: 'rob_schneider@dibstr.com', to: to, subject: 'DIBS!!', text: body};
+
+  mailgun.messages().send(data, cb);
+
+}
+
+function yayEmail(to, sItem, cb){
+  var apikey = process.env.MGAPIKEY,
+      domain = process.env.MGDOMAIN,
+     mailgun = new Mailgun({apiKey: apikey, domain: domain}),
+        body = 'Remember those dibs you called on ' + sItem.name  + '??? Well it worked, buddy!!! This message was brought to you by your fellow brothers of the knife here at Dibstr!',
+        data = {from: 'rob_schneider@dibstr.com', to: to, subject: 'You won!! ' + sItem.name + ' is now yours!!', text: body};
+
+  mailgun.messages().send(data, cb);
+
+}
+
+function yayText(to, sItem, cb){
+  if(!to){return cb();}
+
+  var accountSid = process.env.TWSID,
+      authToken  = process.env.TWTOK,
+      from       = process.env.FROM,
+      client     = require('twilio')(accountSid, authToken),
+      body       = 'Remember those dibs you called on ' + sItem.name  + '??? Well it worked, buddy!!! This message was brought to you by your fellow brothers of the knife here at Dibstr!';
+
+  client.messages.create({to:to, from:from, body:body}, cb);
 }
