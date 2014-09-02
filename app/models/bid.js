@@ -57,6 +57,13 @@ Bid.getBids = function(itemForBidId, cb){
   });
 };
 
+Bid.accept = function(bid, cb){
+  require('./item').collection.findAndModify({_id:bid.bItem}, {}, {$set: {ownerId:bid.seller}}, function(err1, sItem){
+    require('./item').collection.findAndModify({_id:bid.sItem}, {}, {$set: {ownerId:bid.bidder}}, function(err2, bItem){
+      Bid.collection.findAndRemove({_id:bid._id}, cb);
+    });
+  });
+};
 module.exports = Bid;
 
 function iterator(dib, cb){

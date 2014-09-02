@@ -14,7 +14,7 @@ block content
             ul.list-group
               li.list-group-item
                 | Email:&nbsp
-                | #{user.email}
+                a(href='mailto:#{user.email}?Subject=Email%20Message%20from%20Dibster', target='_top')= user.email
               li.list-group-item
                 | Phone:&nbsp
                 | #{user.phone}
@@ -27,7 +27,6 @@ block content
           a.thumbnail(href='#')
             img(src=user.photo)
     .row
-      h3 Items
       .col-xs-12.user-item-list
         span.h3.cap #{user.username}'s
           | Items
@@ -37,18 +36,15 @@ block content
               th Picture
               th Name
               th Date Added
-              th Category
-              th Description
-              th Tags
+              th isAvailable?
+              th Delete
             tbody
               each item in items
                 tr
                   td: a(href='/items/#{item._id}'): img(class='pic-show',src= item.photo)
                   td: a(href='/items/#{item._id}')= item.name
                   td= moment(item.datePosted).format('MM/DD/YYYY')
-                  td= item.category
-                  td= item.description
-                  td= item.tags.join(', ')
+                  td= item.isAvailable
                   td
                     form(action='/items/#{item._id}', method='POST', onsubmit="return confirm('Are you sure you want to delete item?')")
                       input(type='hidden', name='_method', value='delete')
@@ -95,4 +91,7 @@ block content
                   td: a(href='/users/#{bid.bidderName}')= bid.bidderName
                   td: a(href='/items/#{bid.bItem}')= bid.bName
                   td= moment(bid.date).format('MM/DD/YYYY')
+                  td
+                    form(action='/accept/#{bid._id}', method='POST')
+                      button.btn.btn-success(type='submit') Accept
 block scripts

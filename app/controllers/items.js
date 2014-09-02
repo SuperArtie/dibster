@@ -39,6 +39,19 @@ exports.delete = function(req, res){
 
 exports.bid = function(req, res){
   Bid.create(req.body, function(){
-    res.redirect('/dashboard');
+    Item.findById(req.body.bItem, function(err, item){
+      item.isAvailable=false;
+      Item.collection.save(item, function(){
+        res.redirect('/dashboard');
+      });
+    });
+  });
+};
+
+exports.accept = function(req, res){
+  Bid.findById(req.params.bidId, function(err, bid){
+    Bid.accept(bid, function(){
+      res.redirect('/dashboard');
+    });
   });
 };

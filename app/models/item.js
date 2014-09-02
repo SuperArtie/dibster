@@ -57,32 +57,6 @@ Item.deleteById = function(itemId, cb){
   Item.collection.findAndRemove({_id:_id}, cb);
 };
 
-Item.find = function(query, cb){
-  var limit = query.limit || 10,
-      skip = query.page ? (query.page - 1) * limit : 0,
-      filter = {},
-      sort = [];
-
-  if(query.filterName === 'userId'){
-    query.filterValue = Mongo.ObjectID(query.filterValue);
-  }else if(query.filterName === 'description'){
-    query.filterValue = new RegExp(query.filterValue);
-  }else if(query.filterName === 'name'){
-    query.filterValue = new RegExp(query.filterValue);
-  }
-
-  filter[query.filterName] = query.filterValue;
-
-  if(query.sort){
-    var direction = query.direction ? query.direction * 1 : 1;
-    sort.push([query.sort, direction]);
-  }
-
-  items.find(filter, {sort:sort, skip:skip, limit:limit}).toArray(function(err, records){
-    fn(records);
-  });
-};
-
 module.exports = Item;
 
 // PRIVATE HELPER FUNCTIONS //

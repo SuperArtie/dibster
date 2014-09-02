@@ -52,7 +52,7 @@ module.exports = function(app, express){
   app.post('/items', items.save);
   app.get('/browse', items.browse);
   app.post('/items/bid', items.bid);
-
+  app.post('/accept/:bidId', items.accept);
   console.log('Express: Routes Loaded');
 };
 

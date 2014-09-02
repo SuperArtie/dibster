@@ -64,6 +64,8 @@ User.prototype.save = function(o, cb){
   User.collection.save(this, cb);
 };
 
+
+
 // MESSAGES
 
 User.prototype.unread = function(cb){
